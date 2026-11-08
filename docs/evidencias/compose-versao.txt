@@ -1,0 +1,5 @@
+startedAt=2026-11-08T14:43:28.708Z
+command=["docker","compose","version"]
+Docker Compose version v2.40.3-desktop.1
+
+exitCode=0

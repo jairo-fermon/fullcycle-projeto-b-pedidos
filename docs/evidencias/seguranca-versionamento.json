@@ -1,0 +1,15 @@
+{
+  "collectedAt": "2026-11-08T14:50:09.543357+00:00",
+  "commands": [
+    "git ls-files -z",
+    "git check-ignore --quiet .env",
+    "revisao de arquivos e padroes de credencial"
+  ],
+  "filesReviewed": 72,
+  "envIgnored": true,
+  "realEnvTracked": false,
+  "credentialPatternFindings": [],
+  "brokenLocalMarkdownLinks": [],
+  "status": "PASSOU",
+  "scope": "Padroes de credencial de alta confianca, ausencia de .env e revisao de exemplos/fixtures. Nao e garantia matematica de ausencia de segredo."
+}

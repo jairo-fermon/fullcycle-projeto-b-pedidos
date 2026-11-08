@@ -1,0 +1,20 @@
+startedAt=2026-11-08T14:43:29.542Z
+command=["docker","compose","--profile","test","--profile","tools","down","--volumes","--remove-orphans"]
+ Container fullcycle-b-pedidos-test-db-1  Stopping
+ Container fullcycle-b-pedidos-app-1  Stopping
+ Container fullcycle-b-pedidos-test-db-1  Stopped
+ Container fullcycle-b-pedidos-test-db-1  Removing
+ Container fullcycle-b-pedidos-test-db-1  Removed
+ Container fullcycle-b-pedidos-app-1  Stopped
+ Container fullcycle-b-pedidos-app-1  Removing
+ Container fullcycle-b-pedidos-app-1  Removed
+ Container fullcycle-b-pedidos-db-1  Stopping
+ Container fullcycle-b-pedidos-db-1  Stopped
+ Container fullcycle-b-pedidos-db-1  Removing
+ Container fullcycle-b-pedidos-db-1  Removed
+ Network fullcycle-b-pedidos_default  Removing
+ Volume fullcycle-b-pedidos_orders-data  Removing
+ Volume fullcycle-b-pedidos_orders-data  Removed
+ Network fullcycle-b-pedidos_default  Removed
+
+exitCode=0

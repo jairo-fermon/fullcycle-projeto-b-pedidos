@@ -1,0 +1,5 @@
+startedAt=2026-11-08T14:44:25.618Z
+command=["docker","compose","--profile","tools","run","--rm","--no-deps","k6","version"]
+k6 v1.3.0+dirty (commit/5870e99ae8-dirty, go1.25.1, linux/amd64)
+
+exitCode=0

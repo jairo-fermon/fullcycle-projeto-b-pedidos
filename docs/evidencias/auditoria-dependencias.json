@@ -1,0 +1,13 @@
+{
+  "collectedAt": "2026-11-08T11:39:58.560942-03:00",
+  "command": "npm audit --json",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "note": "Dependencias completas incluindo desenvolvimento. Override minimatch 11.0.5; timestamp derivado da gravacao real da resposta."
+}

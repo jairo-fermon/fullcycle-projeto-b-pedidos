@@ -1,0 +1,6 @@
+startedAt=2026-11-08T14:44:22.180Z
+command=["docker","compose","restart","app"]
+ Container fullcycle-b-pedidos-app-1  Restarting
+ Container fullcycle-b-pedidos-app-1  Started
+
+exitCode=0

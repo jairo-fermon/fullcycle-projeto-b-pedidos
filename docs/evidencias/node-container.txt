@@ -1,0 +1,5 @@
+startedAt=2026-11-08T14:44:24.668Z
+command=["docker","compose","exec","-T","app","node","--version"]
+v24.22.2
+
+exitCode=0

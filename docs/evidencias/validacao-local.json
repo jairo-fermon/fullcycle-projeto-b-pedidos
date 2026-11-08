@@ -1,0 +1,276 @@
+{
+  "startedAt": "2026-11-08T14:43:28.237Z",
+  "timeZone": "America/Sao_Paulo",
+  "host": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 16893386752,
+    "node": "v24.19.0"
+  },
+  "sourceCommit": "10caa5fd38b9c45f29e6737c52ed306d1ee0123f",
+  "cleanDatabaseRequested": true,
+  "checks": [
+    {
+      "name": "ambiente-local",
+      "startedAt": "2026-11-08T14:43:28.362Z",
+      "finishedAt": "2026-11-08T14:43:28.474Z",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/init-env.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "docker-versao",
+      "startedAt": "2026-11-08T14:43:28.474Z",
+      "finishedAt": "2026-11-08T14:43:28.708Z",
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Client.Version}} / {{.Server.Version}}"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-versao",
+      "startedAt": "2026-11-08T14:43:28.708Z",
+      "finishedAt": "2026-11-08T14:43:29.088Z",
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-config",
+      "startedAt": "2026-11-08T14:43:29.088Z",
+      "finishedAt": "2026-11-08T14:43:29.542Z",
+      "command": [
+        "docker",
+        "compose",
+        "config",
+        "--quiet"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "limpeza",
+      "startedAt": "2026-11-08T14:43:29.542Z",
+      "finishedAt": "2026-11-08T14:43:31.291Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "test",
+        "--profile",
+        "tools",
+        "down",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "subida-limpa",
+      "startedAt": "2026-11-08T14:43:31.291Z",
+      "finishedAt": "2026-11-08T14:43:58.071Z",
+      "command": [
+        "docker",
+        "compose",
+        "up",
+        "--build",
+        "-d",
+        "--wait"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "qualidade",
+      "startedAt": "2026-11-08T14:43:58.071Z",
+      "finishedAt": "2026-11-08T14:44:21.772Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "test",
+        "run",
+        "--build",
+        "--rm",
+        "tests",
+        "sh",
+        "-c",
+        "npm run lint && npm run typecheck && npm run build && npm run openapi:lint && npm test"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "demonstracao",
+      "startedAt": "2026-11-08T14:44:21.776Z",
+      "finishedAt": "2026-11-08T14:44:22.102Z",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--env-file=.env",
+        "scripts/demo.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "reinicio-app",
+      "startedAt": "2026-11-08T14:44:22.180Z",
+      "finishedAt": "2026-11-08T14:44:23.445Z",
+      "command": [
+        "docker",
+        "compose",
+        "restart",
+        "app"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "persistencia-sql",
+      "startedAt": "2026-11-08T14:44:23.681Z",
+      "finishedAt": "2026-11-08T14:44:24.200Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "db",
+        "sh",
+        "-c",
+        "psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT id,status,total_cents FROM orders ORDER BY created_at DESC LIMIT 5;\""
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "logs-json",
+      "startedAt": "2026-11-08T14:44:24.235Z",
+      "finishedAt": "2026-11-08T14:44:24.663Z",
+      "command": [
+        "docker",
+        "compose",
+        "logs",
+        "--no-color",
+        "--no-log-prefix",
+        "app"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "node-container",
+      "startedAt": "2026-11-08T14:44:24.668Z",
+      "finishedAt": "2026-11-08T14:44:25.154Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "app",
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "postgres-container",
+      "startedAt": "2026-11-08T14:44:25.154Z",
+      "finishedAt": "2026-11-08T14:44:25.618Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "db",
+        "postgres",
+        "--version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "k6-versao",
+      "startedAt": "2026-11-08T14:44:25.618Z",
+      "finishedAt": "2026-11-08T14:44:26.827Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "tools",
+        "run",
+        "--rm",
+        "--no-deps",
+        "k6",
+        "version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "k6-terminal",
+      "startedAt": "2026-11-08T14:44:26.827Z",
+      "finishedAt": "2026-11-08T14:45:00.322Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "tools",
+        "run",
+        "--rm",
+        "k6"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-status",
+      "startedAt": "2026-11-08T14:45:00.323Z",
+      "finishedAt": "2026-11-08T14:45:00.820Z",
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    }
+  ],
+  "coverage": {
+    "lines": 100,
+    "branches": 96.47,
+    "statements": 99.33,
+    "functions": 100
+  },
+  "persistence": {
+    "orderId": "25371eed-0d55-4b97-9f61-d20f5dd8b00a",
+    "status": "CONFIRMED",
+    "totalCents": 3000,
+    "preservedAfterRestart": true
+  },
+  "performance": {
+    "createP95ms": 127.72999699999995,
+    "createMaxMs": 189.288594,
+    "httpRequests": 116,
+    "iterations": 29,
+    "errorRate": 0
+  },
+  "status": "PASSOU",
+  "finishedAt": "2026-11-08T14:45:00.820Z"
+}

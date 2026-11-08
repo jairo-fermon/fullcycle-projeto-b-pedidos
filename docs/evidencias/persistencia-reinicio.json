@@ -1,0 +1,30 @@
+{
+  "before": {
+    "id": "25371eed-0d55-4b97-9f61-d20f5dd8b00a",
+    "status": "CONFIRMED",
+    "totalCents": 3000,
+    "items": [
+      {
+        "sku": "CANETA-AZUL",
+        "quantity": 2,
+        "unitPriceCents": 1500
+      }
+    ],
+    "createdAt": "2026-11-08T14:44:21.971Z",
+    "confirmedAt": "2026-11-08T14:44:22.015Z"
+  },
+  "after": {
+    "id": "25371eed-0d55-4b97-9f61-d20f5dd8b00a",
+    "status": "CONFIRMED",
+    "totalCents": 3000,
+    "items": [
+      {
+        "sku": "CANETA-AZUL",
+        "quantity": 2,
+        "unitPriceCents": 1500
+      }
+    ],
+    "createdAt": "2026-11-08T14:44:21.971Z",
+    "confirmedAt": "2026-11-08T14:44:22.015Z"
+  }
+}

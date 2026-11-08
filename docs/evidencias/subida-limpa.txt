@@ -1,0 +1,123 @@
+startedAt=2026-11-08T14:43:31.291Z
+command=["docker","compose","up","--build","-d","--wait"]
+#1 [internal] load local bake definitions
+#1 reading from stdin 627B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 575B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.22.2-bookworm-slim
+#3 DONE 0.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 121.23kB 0.0s done
+#5 DONE 0.0s
+
+#6 [dependencies 1/4] FROM docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
+#6 resolve docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 0.0s done
+#6 DONE 0.1s
+
+#7 [dependencies 2/4] WORKDIR /app
+#7 CACHED
+
+#8 [dependencies 3/4] COPY package*.json ./
+#8 DONE 0.0s
+
+#9 [dependencies 4/4] RUN npm ci
+#9 ...
+
+#10 [runtime 4/7] RUN npm ci --omit=dev && npm cache clean --force
+#10 4.075 
+#10 4.075 added 66 packages, and audited 67 packages in 4s
+#10 4.075 
+#10 4.075 19 packages are looking for funding
+#10 4.075   run `npm fund` for details
+#10 4.081 
+#10 4.081 found 0 vulnerabilities
+#10 4.084 npm notice
+#10 4.084 npm notice New major version of npm available! 11.19.1 -> 12.2.2
+#10 4.084 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#10 4.084 npm notice To update run: npm install -g npm@12.2.2
+#10 4.084 npm notice
+#10 4.436 npm warn using --force Recommended protections disabled.
+#10 DONE 5.1s
+
+#9 [dependencies 4/4] RUN npm ci
+#9 7.986 
+#9 7.986 added 209 packages, and audited 210 packages in 8s
+#9 7.986 
+#9 7.986 61 packages are looking for funding
+#9 7.986   run `npm fund` for details
+#9 7.988 
+#9 7.988 found 0 vulnerabilities
+#9 7.992 npm notice
+#9 7.992 npm notice New major version of npm available! 11.19.1 -> 12.2.2
+#9 7.992 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#9 7.992 npm notice To update run: npm install -g npm@12.2.2
+#9 7.992 npm notice
+#9 DONE 8.2s
+
+#11 [build 1/3] COPY tsconfig.json ./
+#11 DONE 0.2s
+
+#12 [build 2/3] COPY src ./src
+#12 DONE 0.1s
+
+#13 [build 3/3] RUN npm run build
+#13 0.368 
+#13 0.368 > fullcycle-projeto-b-pedidos@1.0.0 build
+#13 0.368 > tsc
+#13 0.368 
+#13 DONE 2.2s
+
+#14 [runtime 5/7] COPY --from=build /app/dist ./dist
+#14 DONE 0.1s
+
+#15 [runtime 6/7] COPY migrations ./migrations
+#15 DONE 0.1s
+
+#16 [runtime 7/7] COPY scripts/start.mjs ./scripts/start.mjs
+#16 DONE 0.1s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 1.2s done
+#17 exporting manifest sha256:a741a88597039ce5b2eea115c3065eda34e2ccda7d9cb587dabb98733e951669 0.0s done
+#17 exporting config sha256:9b19adb85cf5820408fb2a0b45a1ac38bcbd838418dcd85699bfdb0c2a6a765d 0.0s done
+#17 exporting attestation manifest sha256:4b3600b03a45d405953ae20176517e9d8abb0571d9a172cd875368419593199f 0.0s done
+#17 exporting manifest list sha256:0dc79cbcb60fb9729e51f7a361e719ee9acf6436bfad41c818e02c1beda8daa0 0.0s done
+#17 naming to docker.io/library/fullcycle-b-pedidos-app:latest
+#17 naming to docker.io/library/fullcycle-b-pedidos-app:latest done
+#17 unpacking to docker.io/library/fullcycle-b-pedidos-app:latest
+#17 unpacking to docker.io/library/fullcycle-b-pedidos-app:latest 0.7s done
+#17 DONE 2.1s
+
+#18 resolving provenance for metadata file
+#18 DONE 0.0s
+ fullcycle-b-pedidos-app  Built
+ Network fullcycle-b-pedidos_default  Creating
+ Network fullcycle-b-pedidos_default  Created
+ Volume fullcycle-b-pedidos_orders-data  Creating
+ Volume fullcycle-b-pedidos_orders-data  Created
+ Container fullcycle-b-pedidos-db-1  Creating
+ Container fullcycle-b-pedidos-db-1  Created
+ Container fullcycle-b-pedidos-app-1  Creating
+ Container fullcycle-b-pedidos-app-1  Created
+ Container fullcycle-b-pedidos-db-1  Starting
+ Container fullcycle-b-pedidos-db-1  Started
+ Container fullcycle-b-pedidos-db-1  Waiting
+ Container fullcycle-b-pedidos-db-1  Healthy
+ Container fullcycle-b-pedidos-app-1  Starting
+ Container fullcycle-b-pedidos-app-1  Started
+ Container fullcycle-b-pedidos-app-1  Waiting
+ Container fullcycle-b-pedidos-db-1  Waiting
+ Container fullcycle-b-pedidos-db-1  Healthy
+ Container fullcycle-b-pedidos-app-1  Healthy
+
+exitCode=0

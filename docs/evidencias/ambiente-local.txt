@@ -1,0 +1,5 @@
+startedAt=2026-11-08T14:43:28.362Z
+command=["C:\\Program Files\\nodejs\\node.exe","scripts/init-env.mjs"]
+.env existente preservado.
+
+exitCode=0

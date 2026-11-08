@@ -1,0 +1,27 @@
+startedAt=2026-11-08T14:44:24.235Z
+command=["docker","compose","logs","--no-color","--no-log-prefix","app"]
+{"level":30,"time":1794149034627,"pid":7,"hostname":"069ec367e1f4","msg":"Server listening at http://127.0.0.1:3000"}
+{"level":30,"time":1794149034627,"pid":7,"hostname":"069ec367e1f4","msg":"Server listening at http://172.20.0.3:3000"}
+{"level":30,"time":1794149037470,"pid":7,"hostname":"069ec367e1f4","reqId":"bb0801dd-ed85-4e16-aafb-fff33310fa16","method":"GET","route":"/health","status":200,"durationMs":4.14149,"msg":"request_completed"}
+{"level":30,"time":1794149040614,"pid":7,"hostname":"069ec367e1f4","reqId":"dc970560-5700-41a2-a8ed-dc8d1cf7289e","method":"GET","route":"/health","status":200,"durationMs":1.1674470000000001,"msg":"request_completed"}
+{"level":30,"time":1794149043750,"pid":7,"hostname":"069ec367e1f4","reqId":"0dbb1e88-5b4a-4cd5-b474-a36b984abf09","method":"GET","route":"/health","status":200,"durationMs":1.105237,"msg":"request_completed"}
+{"level":30,"time":1794149046933,"pid":7,"hostname":"069ec367e1f4","reqId":"ca4bea08-1e47-4871-af01-4ac26a3c0ee3","method":"GET","route":"/health","status":200,"durationMs":1.210209,"msg":"request_completed"}
+{"level":30,"time":1794149050194,"pid":7,"hostname":"069ec367e1f4","reqId":"103880a0-001e-4204-908b-6c26c346870c","method":"GET","route":"/health","status":200,"durationMs":1.456796,"msg":"request_completed"}
+{"level":30,"time":1794149053347,"pid":7,"hostname":"069ec367e1f4","reqId":"de29ee7a-b114-4b4f-a048-06afedb87aba","method":"GET","route":"/health","status":200,"durationMs":1.676297,"msg":"request_completed"}
+{"level":30,"time":1794149056506,"pid":7,"hostname":"069ec367e1f4","reqId":"f5bb5d94-3277-436a-8ef4-b2971fba8637","method":"GET","route":"/health","status":200,"durationMs":1.043278,"msg":"request_completed"}
+{"level":30,"time":1794149059755,"pid":7,"hostname":"069ec367e1f4","reqId":"9e9cf16f-b1d3-473a-9c69-086253766a80","method":"GET","route":"/health","status":200,"durationMs":1.594226,"msg":"request_completed"}
+{"level":30,"time":1794149061978,"pid":7,"hostname":"069ec367e1f4","reqId":"410baf7a-047d-4df3-9e3a-c31c02e85d45","method":"POST","route":"/orders","status":201,"durationMs":10.794152,"msg":"request_completed"}
+{"level":30,"time":1794149061999,"pid":7,"hostname":"069ec367e1f4","reqId":"edbb7cac-3396-45c1-99a4-8aac261cfdf3","method":"GET","route":"/orders/:id","status":200,"durationMs":5.089065000000001,"msg":"request_completed"}
+{"level":30,"time":1794149062021,"pid":7,"hostname":"069ec367e1f4","reqId":"c239acfc-8ec7-49da-b1c3-4f34cf3bc9dc","method":"POST","route":"/orders/:id/confirm","status":200,"durationMs":9.826144,"msg":"request_completed"}
+{"level":30,"time":1794149062027,"pid":7,"hostname":"069ec367e1f4","reqId":"f48f2635-8ffe-468e-adba-69e58387c9e5","method":"GET","route":"/orders/:id","status":200,"durationMs":2.283283,"msg":"request_completed"}
+{"level":30,"time":1794149062047,"pid":7,"hostname":"069ec367e1f4","reqId":"246ff346-262d-4731-9782-23010dc38b41","method":"POST","route":"/orders/:id/confirm","status":409,"durationMs":3.703704,"msg":"request_completed"}
+{"level":30,"time":1794149062063,"pid":7,"hostname":"069ec367e1f4","reqId":"e6e95def-8e87-4226-aef9-0d12663d784f","method":"GET","route":"/orders/:id","status":404,"durationMs":1.723423,"msg":"request_completed"}
+{"level":30,"time":1794149062170,"pid":7,"hostname":"069ec367e1f4","reqId":"3c42e2e6-ff2b-4b13-8e4a-a47729215ac0","method":"GET","route":"/orders/:id","status":200,"durationMs":2.657637,"msg":"request_completed"}
+{"level":30,"time":1794149063561,"pid":7,"hostname":"069ec367e1f4","msg":"Server listening at http://127.0.0.1:3000"}
+{"level":30,"time":1794149063561,"pid":7,"hostname":"069ec367e1f4","msg":"Server listening at http://172.20.0.3:3000"}
+{"level":30,"time":1794149063683,"pid":7,"hostname":"069ec367e1f4","reqId":"3069a2b2-0a6f-4705-87fb-0a48a431995f","method":"GET","route":"/orders/:id","status":200,"durationMs":10.665248,"msg":"request_completed"}
+{"level":30,"time":1794149064209,"pid":7,"hostname":"069ec367e1f4","reqId":"bcc885fa-957a-477b-8927-1d6e4fd098bd","method":"GET","route":"/metrics","status":200,"durationMs":1.5926799999999999,"msg":"request_completed"}
+{"level":30,"time":1794149064232,"pid":7,"hostname":"069ec367e1f4","reqId":"b9c1a575-9e0d-4b1b-ab1a-88b713fe1588","method":"GET","route":"/orders/:id","status":200,"durationMs":3.76599,"msg":"request_completed"}
+{"level":30,"time":1794149064235,"pid":7,"hostname":"069ec367e1f4","reqId":"1375a294-7646-40a8-9de8-99b17cd90482","method":"GET","route":"/metrics","status":200,"durationMs":0.549401,"msg":"request_completed"}
+
+exitCode=0

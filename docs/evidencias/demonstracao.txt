@@ -1,0 +1,11 @@
+startedAt=2026-11-08T14:44:21.776Z
+command=["C:\\Program Files\\nodejs\\node.exe","--env-file=.env","scripts/demo.mjs"]
+{"method":"POST","path":"/orders","status":201,"requestId":"410baf7a-047d-4df3-9e3a-c31c02e85d45","data":{"id":"25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":"PENDING","items":[{"sku":"CANETA-AZUL","quantity":2,"unitPriceCents":1500}],"totalCents":3000,"createdAt":"2026-11-08T14:44:21.971Z","confirmedAt":null}}
+{"method":"GET","path":"/orders/25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":200,"requestId":"edbb7cac-3396-45c1-99a4-8aac261cfdf3","data":{"id":"25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":"PENDING","totalCents":3000,"items":[{"sku":"CANETA-AZUL","quantity":2,"unitPriceCents":1500}],"createdAt":"2026-11-08T14:44:21.971Z","confirmedAt":null}}
+{"method":"POST","path":"/orders/25371eed-0d55-4b97-9f61-d20f5dd8b00a/confirm","status":200,"requestId":"c239acfc-8ec7-49da-b1c3-4f34cf3bc9dc","data":{"id":"25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":"CONFIRMED","totalCents":3000,"items":[{"sku":"CANETA-AZUL","quantity":2,"unitPriceCents":1500}],"createdAt":"2026-11-08T14:44:21.971Z","confirmedAt":"2026-11-08T14:44:22.015Z"}}
+{"method":"GET","path":"/orders/25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":200,"requestId":"f48f2635-8ffe-468e-adba-69e58387c9e5","data":{"id":"25371eed-0d55-4b97-9f61-d20f5dd8b00a","status":"CONFIRMED","totalCents":3000,"items":[{"sku":"CANETA-AZUL","quantity":2,"unitPriceCents":1500}],"createdAt":"2026-11-08T14:44:21.971Z","confirmedAt":"2026-11-08T14:44:22.015Z"}}
+{"method":"POST","path":"/orders/25371eed-0d55-4b97-9f61-d20f5dd8b00a/confirm","status":409,"requestId":"246ff346-262d-4731-9782-23010dc38b41","data":{"error":{"code":"ALREADY_CONFIRMED","message":"O pedido já foi confirmado.","requestId":"246ff346-262d-4731-9782-23010dc38b41"}}}
+{"method":"GET","path":"/orders/119f040d-a9b8-4d46-84c9-e15488b2a912","status":404,"requestId":"e6e95def-8e87-4226-aef9-0d12663d784f","data":{"error":{"code":"NOT_FOUND","message":"Pedido não encontrado.","requestId":"e6e95def-8e87-4226-aef9-0d12663d784f"}}}
+{"result":"PASSOU","orderId":"25371eed-0d55-4b97-9f61-d20f5dd8b00a"}
+
+exitCode=0
