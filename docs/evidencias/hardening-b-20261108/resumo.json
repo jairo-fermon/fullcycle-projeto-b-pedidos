@@ -73,6 +73,15 @@
     "existingVolumesDeleted": false
   },
   "localStatus": "PASSOU",
-  "newRemotePublication": "BLOQUEADO: aguarda autorizacao especifica",
-  "newFinalCI": "BLOQUEADO: candidata nao publicada; CI anterior nao comprova novo SHA"
+  "newRemotePublication": "PASSOU: autorizada; publicada em 1a7e916c370910aac4649b77c66f260edec2a28b",
+  "newFinalCI": {
+    "status": "PASSOU",
+    "sha": "1a7e916c370910aac4649b77c66f260edec2a28b",
+    "url": "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479",
+    "scope": "CI dos ajustes. CI do commit posterior de fechamento documental registrada no certificado externo final."
+  },
+  "prePublicationState": {
+    "newRemotePublication": "BLOQUEADO: aguarda autorizacao especifica",
+    "newFinalCI": "BLOQUEADO: candidata nao publicada; CI anterior nao comprova novo SHA"
+  }
 }

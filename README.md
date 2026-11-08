@@ -4,7 +4,11 @@ API de domínio único para criar, consultar e confirmar pedidos. Trabalho indiv
 
 ## Estado e evidências
 
-Baseline pública conferida em 08/11/2026: [repositório](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos), commit `a105fb340e66609ea54f781b5fd639663759964c` e [CI dessa revisão: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42499107175). Essa execução aprovou 58 testes, com 100% de linhas e 96,47% de branches. O [relatório de hardening do B](RELATORIO_HARDENING_B.md) distingue a candidata local, a reprodução diretamente do GitHub e a publicação/CI ainda dependentes de autorização. Um CI histórico não comprova um commit novo.
+Hardening publicado com autorização específica em 08/11/2026. O ajuste do PowerShell e do contrato OpenAPI foi verificado no commit `1a7e916c370910aac4649b77c66f260edec2a28b`: [CI do hardening: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479), com 58 testes, 100% de linhas e 96,47% de branches. O [relatório](RELATORIO_HARDENING_B.md) reúne reprodução pelo GitHub, falha 415 preservada, correção e evidências.
+
+[![CI da branch main](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml?query=branch%3Amain)
+
+O link fixo acima identifica a execução dos ajustes. Commits posteriores de fechamento documental têm sua própria CI: consultar o SHA de `git rev-parse HEAD` no [histórico de main](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml?query=branch%3Amain). O hash e a URL diretos da revisão final são informados no certificado externo de fechamento, evitando inserir neste arquivo o hash do commit que o contém.
 
 Os smokes anteriores de 127,73 ms e 14,89 ms permanecem preservados em [desempenho](docs/desempenho.md) e no [fechamento anterior](docs/FECHAMENTO_AUDITORIA.md), sem alegação de otimização entre execuções. Consulte também a [matriz de aceite](docs/ACEITE_B.md). Ensaio e envio ao Moodle ainda não têm comprovante.
 
@@ -137,7 +141,7 @@ O mínimo declarado para o código em `src/` é **80% linhas e 70% branches**, f
 
 GitHub Actions faz npm ci, lint, typecheck, build, lint OpenAPI e testes/coverage com PostgreSQL isolado. A senha de teste da CI é derivada do identificador da execução, usada somente no serviço efêmero; não é credencial de ambiente real.
 
-A execução remota da baseline identificada no início terminou com `success`, com 58 testes e os percentuais informados. Registros de publicação mais antigos em `docs/evidencias/ci-github.json` e `ci-testes-resumo.txt` continuam históricos. Para a nova candidata, seguir o [relatório de hardening](RELATORIO_HARDENING_B.md): publicar somente com autorização e confirmar CI no SHA efetivamente publicado. O [histórico do workflow](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml) permite consultar as execuções sem atribuir um resultado antigo a uma revisão nova.
+A execução remota do hardening identificada no início terminou com `success`, com 58 testes e os percentuais informados. Registros de publicação mais antigos em `docs/evidencias/ci-github.json` e `ci-testes-resumo.txt` continuam históricos. A publicação do hardening foi autorizada e a CI do SHA dos ajustes foi verificada no [relatório](RELATORIO_HARDENING_B.md). Qualquer revisão posterior exige conferir o resultado do próprio SHA. O [histórico do workflow](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml) permite consultar as execuções sem atribuir um resultado antigo a uma revisão nova.
 
 ## Logs, métrica e SLO
 

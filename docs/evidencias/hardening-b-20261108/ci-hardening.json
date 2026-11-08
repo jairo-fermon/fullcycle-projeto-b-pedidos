@@ -1,0 +1,95 @@
+{
+  "collectedAt": "2026-11-08T18:39:55.532Z",
+  "result": "PASSOU",
+  "repository": "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos",
+  "localCandidate": "9f69ad526960aa689799627eb9f3a8c741b48702",
+  "publishedCandidate": "1a7e916c370910aac4649b77c66f260edec2a28b",
+  "tree": "4c1acac7d98019c0139391b26ad24d482bd09465",
+  "localRemoteTreesEqual": true,
+  "authorization": "Autorizo publicar o hardening do B e executar o CI",
+  "workflow": {
+    "id": 42511035479,
+    "url": "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479",
+    "headSha": "1a7e916c370910aac4649b77c66f260edec2a28b",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-11-08T18:38:47Z",
+    "updatedAt": "2026-11-08T18:39:17Z"
+  },
+  "jobs": [
+    {
+      "id": 128823934831,
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run typecheck",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run openapi:lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "total": 58,
+    "unit": 41,
+    "integration": 17,
+    "linesPct": 100,
+    "branchesPct": 96.47
+  },
+  "scope": "CI do hardening publicado. Smoke, Compose e persistencia constam das evidencias locais. Commit posterior de fechamento documental exige sua propria CI, registrada no certificado externo de entrega."
+}

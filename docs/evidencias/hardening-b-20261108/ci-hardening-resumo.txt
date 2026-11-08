@@ -1,0 +1,13 @@
+Trechos selecionados do log real; codigos ANSI e espacos finais removidos.
+Fonte: https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479; job 128823934831; SHA 1a7e916c370910aac4649b77c66f260edec2a28b
+Coleta: 2026-11-08T18:39:55.532Z
+2026-11-08T18:39:06.0035679Z found 0 vulnerabilities
+2026-11-08T18:39:06.0548138Z ##[group]Run npm run lint
+2026-11-08T18:39:06.8263225Z ##[group]Run npm run typecheck
+2026-11-08T18:39:08.9743112Z ##[group]Run npm run build
+2026-11-08T18:39:09.9737293Z ##[group]Run npm run openapi:lint
+2026-11-08T18:39:10.2266634Z You have 4 warnings.
+2026-11-08T18:39:10.7125628Z ##[group]Run npm test
+2026-11-08T18:39:11.7364448Z  Test Files  5 passed (5)
+2026-11-08T18:39:11.7365062Z       Tests  58 passed (58)
+2026-11-08T18:39:11.7401950Z All files          |   99.33 |    96.47 |     100 |     100 |

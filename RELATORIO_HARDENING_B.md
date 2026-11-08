@@ -8,7 +8,9 @@ Data: 08/11/2026, America/Sao_Paulo. Autorização literal: `APROVO O DIAGNÓSTI
 
 Baseline pública preservada: `a105fb340e66609ea54f781b5fd639663759964c`, árvore `846f8c04bf4faf05eccf8f41059c98c01977511d`. [CI dessa baseline: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42499107175). Esse link não comprova uma candidata nova. O hash da candidata documental é obtido por `git rev-parse HEAD` após o commit e informado no fechamento ao aluno, evitando inserir o hash do próprio arquivo dentro dele.
 
-**Publicação e CI do novo SHA: BLOQUEADO**, aguardando autorização específica. Até nova publicação/CI, a versão pública identificada acima permanece disponível. Não declarar esta candidata APTO TECNICAMENTE PARA SUBMISSÃO enquanto a CI de seu SHA publicado não estiver verificada. Não houve Moodle, release, tag ou início do hardening A.
+**Publicação autorizada e CI do hardening: PASSOU.** O aluno respondeu literalmente “Autorizo publicar o hardening do B e executar o CI”. A candidata local `9f69ad526960aa689799627eb9f3a8c741b48702` foi publicada como `1a7e916c370910aac4649b77c66f260edec2a28b`, com a mesma árvore `4c1acac7d98019c0139391b26ad24d482bd09465`. [Execução verificada: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479), com 58 testes e cobertura 100%/96,47%. Metadados em [ci-hardening.json](docs/evidencias/hardening-b-20261108/ci-hardening.json).
+
+Este fechamento acrescenta apenas documentação/evidências aos ajustes já validados. A CI do commit que inclui este próprio registro deve ser verificada separadamente pelo SHA no [histórico de main](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml?query=branch%3Amain); o certificado externo CI_FINAL_B.json, entregue ao aluno, registra seu hash e URL exatos após conclusão. A classificação definitiva exige essa verificação. Não houve Moodle, release, tag ou início do hardening A.
 
 ## Problemas, hipótese, correção, teste e risco residual
 
@@ -16,7 +18,7 @@ Baseline pública preservada: `a105fb340e66609ea54f781b5fd639663759964c`, árvor
 | --- | --- | --- | --- | --- | --- |
 | P0 de demonstração/documentação | O comando de confirmação do README retornou HTTP 415 no PowerShell 7.6.9. | O cliente define Content-Type application/x-www-form-urlencoded no POST sem parâmetros explícitos. | Exemplo envia application/json e objeto vazio; OpenAPI documenta a resposta 415 real. API mantida. | Falha preservada; comando corrigido retornou CONFIRMED, repetição 409; PASSOU. | Windows PowerShell 5.1 não foi executado; runtime validado é o indicado. Usar cabeçalho/corpo explícitos. |
 | P1 | README iniciava na pasta pronta, sem clone/cd explícitos. | Avaliador precisaria inferir como obter o projeto. | Adicionar git clone, Set-Location e preparo seguro com env:init. | Clone direto do GitHub, início limpo, build/up/fluxo/SQL/restart reais; PASSOU. | Primeiro download requer internet e Docker Linux ativo. |
-| P1 | Link principal de CI apontava para c09d204, embora baseline atual seja a105fb3. | Mistura entre execução histórica e candidata pode induzir conclusão incorreta. | Identificar CI da baseline atual e pendência da nova revisão; link de histórico do workflow. | Identificação e links revisados; nova publicação/CI BLOQUEADO por autorização. | Necessário verificar o SHA efetivamente publicado após autorização. |
+| P1 | Link principal de CI apontava para c09d204, embora baseline atual seja a105fb3. | Mistura entre execução histórica e candidata pode induzir conclusão incorreta. | Identificar CI da baseline atual e pendência da nova revisão; link de histórico do workflow. | Identificação e links revisados; publicação autorizada e CI do hardening PASSOU. | Necessário verificar o SHA efetivamente publicado após autorização. |
 | P1 | Persistência era demonstrada pelo validador, sem sequência manual completa no README. | Professor precisaria combinar instruções. | Incluir restart, espera de saúde e consulta do mesmo ID em PowerShell. | Pedido 5aa5ba51-dd22-4703-9520-4aef2646ae48 continuou CONFIRMED/3000 após restart e após trocar o contêiner app; PASSOU. | Remover volume apaga dados; isso não foi executado. |
 
 ## Arquivos alterados
@@ -41,7 +43,7 @@ Baseline pública preservada: `a105fb340e66609ea54f781b5fd639663759964c`, árvor
 | Persistência | Mesmo pedido após restart e recriação do app; SQL confirmou id/status/total. | PASSOU |
 | Encerramento | compose down sem -v/--volumes; volume nomeado ainda existe e contêineres auxiliares encerrados. | PASSOU |
 | README reproduzível | Comandos executados em PowerShell; porta adaptada de 3000 para 3002 para isolar os sistemas existentes. | PASSOU |
-| GitHub sincronizado | Baseline local = GitHub; alterações candidatas ainda locais, publicação nova depende de autorização. | BLOQUEADO para nova candidata |
+| GitHub sincronizado | Candidata local 9f69ad5 = publicação 1a7e916, mesma árvore de arquivos; sem alterações de src/execução. Fechamento documental terá nova comparação e CI próprias. | PASSOU para ajustes publicados |
 
 ## Testes, qualidade, observabilidade e segurança
 
@@ -76,14 +78,14 @@ Host/versões/horários estão em validacao-local.json e arquivos de versão. Os
 
 MANTER SEM ALTERAÇÃO: arquitetura de domínio único, Repository, transações, validações, confirmações concorrentes, dependências, Docker e CI. NÃO APLICÁVEL ao B: C4, 100 mil pedidos, fila/cache e k6 em três estágios. P2 descartados: refatoração estética, troca de stack, atualizações sem necessidade e infraestrutura adicional.
 
-Riscos remanescentes: disponibilidade de internet/engine na primeira preparação, porta ocupada, permissões locais de Docker, dados perdidos se o usuário remover volume, CI futura ainda não executada e domínio oral não comprovado. Os PDFs existentes são apoio histórico; sua atualização consolidada pertence ao checkpoint de fechamento autorizado posteriormente. O exemplo manual corrigido deve ser usado com o README atual.
+Riscos remanescentes: disponibilidade de internet/engine na primeira preparação, porta ocupada, permissões locais de Docker, dados perdidos se o usuário remover volume, necessidade de conferir a CI de cada futura revisão e domínio oral não comprovado. Os PDFs existentes são apoio histórico; sua atualização consolidada pertence ao checkpoint de fechamento autorizado posteriormente. O exemplo manual corrigido deve ser usado com o README atual.
 
 ## Demonstração e versão recomendada
 
 Na pasta do B: `npm run env:init`, `docker compose up --build -d --wait`, `npm run demo`. A demonstração manual e o restart ficam no README, com JSON explícito na confirmação. `docker compose down` encerra preservando dados.
 
-Para a entrega final, preferir a candidata documental corrigida **depois** de autorização de publicação e CI verde do SHA publicado. Até lá, não anunciar que o GitHub contém a correção do PowerShell. O HEAD público anterior permanece preservado. Envio ao Moodle continua humano e sem comprovante.
+Para a entrega final do B, preferir a revisão publicada com a correção PowerShell e a CI do SHA final conferida no certificado de fechamento entregue ao aluno. O GitHub já contém a correção. As versões anteriores continuam preservadas no histórico. O commit de fechamento documental exige sua própria CI; envio ao Moodle continua humano e sem comprovante.
 
-Próximo gate de implementação, após fechamento do B: `APROVO O HARDENING DO B; INICIAR O A`. Este relatório não autoriza o A. Antes disso, publicação nova requer autorização específica do aluno conforme seções 3.4 e 5.3 do prompt.
+Próximo gate de implementação, após fechamento do B: `APROVO O HARDENING DO B; INICIAR O A`. Este relatório não autoriza o A. A publicação deste hardening foi especificamente autorizada; isso não autoriza avançar para o A nem enviar ao Moodle.
 
 Evidências: [índice](docs/evidencias/hardening-b-20261108/LEIA-ME.md), [resumo](docs/evidencias/hardening-b-20261108/resumo.json), [PowerShell corrigido](docs/evidencias/hardening-b-20261108/readme-powershell.json), [falha 415 preservada](docs/evidencias/hardening-b-20261108/readme-powershell-falha-415.json), [persistência e encerramento](docs/evidencias/hardening-b-20261108/persistencia-encerramento.json).

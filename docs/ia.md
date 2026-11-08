@@ -36,3 +36,7 @@ O aluno aprovou literalmente o B e o A, encerrando os gates de implementação, 
 ## Hardening B autorizado em 08/11/2026
 
 O aluno enviou `APROVO O DIAGNÓSTICO; INICIAR HARDENING DO B`, após os prompts de hardening e auditoria Docker. Escopo: somente B, correções P0 e P1 justificadas, preservando A, dados existentes e histórico. A IA propôs completar clone/preparo no README, demonstrar persistência em PowerShell e separar CI histórico da candidata nova. Reprodução em clone obtido do GitHub, com nome Compose e porta próprios e senha aleatória independente. Nenhuma autorização de publicação nova, hardening do A ou envio ao Moodle é presumida. Resultados reais e limitações são registrados no relatório específico.
+
+## Publicação específica do hardening B
+
+O aluno autorizou literalmente: “Autorizo publicar o hardening do B e executar o CI”, e pediu continuar. O conector da conta correta publicou a candidata com árvore igual à local. [CI do hardening: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42511035479) no SHA `1a7e916c370910aac4649b77c66f260edec2a28b`, com 58 testes e cobertura 100% linhas/96,47% branches. Este fechamento registra o resultado sem atribuir a execução a outro SHA. O commit documental final tem seu próprio CI/certificado, conferido antes da entrega. A e Moodle continuam sem nova autorização nesta etapa.
