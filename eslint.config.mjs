@@ -7,7 +7,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   { files: ['**/*.mjs', 'scripts/k6-smoke.js'], languageOptions: { globals: {
     console: 'readonly', process: 'readonly', fetch: 'readonly', URL: 'readonly',
-    setTimeout: 'readonly', __ENV: 'readonly'
+    setTimeout: 'readonly', AbortSignal: 'readonly', __ENV: 'readonly'
   } } },
   { files: ['**/*.ts'], rules: { '@typescript-eslint/no-explicit-any': 'error' } }
 );

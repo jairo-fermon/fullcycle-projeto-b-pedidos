@@ -1,0 +1,286 @@
+openapi: 3.1.0
+info:
+  title: API de Pedidos - Projeto B Full Cycle
+  version: 1.0.0
+  description: Um único domínio; valores monetários em centavos inteiros. Confirmação única e persistência PostgreSQL.
+servers:
+  - url: http://localhost:{port}
+    description: Ambiente local; configure PORT para outra porta.
+    variables:
+      port:
+        default: '3000'
+security: []
+tags:
+  - name: Pedidos
+    description: Criação, consulta e confirmação de pedidos.
+  - name: Operacao
+    description: Verificação de disponibilidade e métricas técnicas.
+paths:
+  /orders:
+    post:
+      tags: [Pedidos]
+      operationId: createOrder
+      summary: Criar pedido pendente
+      description: Calcula o total no servidor e grava pedido e itens em transação única. Limite de corpo de 64 KiB.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrder'
+            example:
+              items:
+                - sku: CANETA-AZUL
+                  quantity: 2
+                  unitPriceCents: 1500
+      responses:
+        '201':
+          description: Pedido persistido; totalCents calculado pelo servidor.
+          headers:
+            Location:
+              description: Caminho para consultar o pedido criado.
+              schema:
+                type: string
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/InvalidInput'
+        '413':
+          $ref: '#/components/responses/InvalidInput'
+        '415':
+          $ref: '#/components/responses/InvalidInput'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /orders/{id}:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+    get:
+      tags: [Pedidos]
+      operationId: getOrder
+      summary: Consultar pedido persistido
+      responses:
+        '200':
+          description: Pedido e seus itens em ordem de inclusão.
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/InvalidInput'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /orders/{id}/confirm:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+    post:
+      tags: [Pedidos]
+      operationId: confirmOrder
+      summary: Confirmar uma única vez
+      description: Transição PENDING para CONFIRMED. Uma segunda confirmação recebe 409, inclusive sob concorrência. Não recebe corpo de negócio.
+      responses:
+        '200':
+          description: Pedido confirmado com confirmedAt preenchido.
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/InvalidInput'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: O pedido já foi confirmado; error.code é ALREADY_CONFIRMED.
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /health:
+    get:
+      tags: [Operacao]
+      operationId: getHealth
+      summary: Verificar conectividade com o banco
+      responses:
+        '200':
+          description: Aplicação e banco disponíveis.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [status]
+                properties:
+                  status:
+                    const: ok
+        '503':
+          description: Banco indisponível.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [status]
+                properties:
+                  status:
+                    const: unavailable
+  /metrics:
+    get:
+      tags: [Operacao]
+      operationId: getMetrics
+      summary: Consultar métricas HTTP reais
+      description: Formato Prometheus; labels method, route normalizada e status. Não contabiliza o próprio endpoint metrics.
+      responses:
+        '200':
+          description: Contador de requisições e histograma de duração em segundos.
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  parameters:
+    OrderId:
+      name: id
+      in: path
+      required: true
+      description: Identificador UUID do pedido.
+      schema:
+        type: string
+        format: uuid
+  headers:
+    RequestId:
+      description: UUID gerado pelo servidor; também aparece nos logs como reqId.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    Item:
+      type: object
+      additionalProperties: false
+      required: [sku, quantity, unitPriceCents]
+      properties:
+        sku:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '^\S(?:.*\S)?$'
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        unitPriceCents:
+          type: integer
+          minimum: 1
+          maximum: 1000000
+    CreateOrder:
+      type: object
+      additionalProperties: false
+      required: [items]
+      properties:
+        items:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/Item'
+    Order:
+      type: object
+      additionalProperties: false
+      required: [id, status, items, totalCents, createdAt, confirmedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED]
+        items:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/Item'
+        totalCents:
+          type: integer
+          minimum: 1
+          maximum: 100000000000
+        createdAt:
+          type: string
+          format: date-time
+        confirmedAt:
+          type: [string, 'null']
+          format: date-time
+      allOf:
+        - if:
+            properties:
+              status:
+                const: PENDING
+          then:
+            properties:
+              confirmedAt:
+                type: 'null'
+          else:
+            properties:
+              confirmedAt:
+                type: string
+    Error:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message, requestId]
+          properties:
+            code:
+              type: string
+              enum: [INVALID_INPUT, NOT_FOUND, ALREADY_CONFIRMED, INTERNAL_ERROR]
+            message:
+              type: string
+            requestId:
+              type: string
+              format: uuid
+  responses:
+    InvalidInput:
+      description: Entrada inválida (400), corpo acima de 64 KiB (413) ou tipo de conteúdo não suportado (415); error.code é INVALID_INPUT.
+      headers:
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: UUID válido sem pedido correspondente; error.code é NOT_FOUND.
+      headers:
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Falha interna sem exposição de SQL, stack ou credenciais; error.code é INTERNAL_ERROR.
+      headers:
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
