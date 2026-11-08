@@ -1,0 +1,78 @@
+{
+  "collectedAt": "2026-11-08T17:22:35.170711+00:00",
+  "timezone": "America/Sao_Paulo",
+  "scope": "Hardening B; sem mudanca de implementacao, dependencias, Docker, testes ou workflow",
+  "baselineCommit": "a105fb340e66609ea54f781b5fd639663759964c",
+  "candidateReadmeSha256": "e5b4d6b198e57dbc50279a744fae7d87ca1532c16516586c9914fc9ca3cbc692",
+  "candidateOpenapiSha256": "b2ae428e2b0a6a6f4d3af2c122bbfe0c1e77f3d2381684ca265ee6f33be63106",
+  "cloneGitHub": {
+    "startedAt": "2026-11-08T17:14:01.236511+00:00",
+    "timezone": "America/Sao_Paulo",
+    "cloneCommand": [
+      "git",
+      "-c",
+      "credential.helper=",
+      "clone",
+      "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos.git",
+      "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos"
+    ],
+    "cloneExitCode": 0,
+    "source": "GitHub publico, nao clone local",
+    "checkout": "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos",
+    "cleanAtStart": true,
+    "HEAD": "a105fb340e66609ea54f781b5fd639663759964c",
+    "projectName": "fullcycle-b-hardening-20261108",
+    "port": 3002,
+    "existingVolumesDeleted": false
+  },
+  "fullValidation": {
+    "startedAt": "2026-11-08T17:14:20.466Z",
+    "finishedAt": "2026-11-08T17:15:28.136Z",
+    "status": "PASSOU",
+    "cleanFlagUsed": false,
+    "allChecksExitCodeZero": true
+  },
+  "tests": {
+    "unit": 41,
+    "integration": 17,
+    "total": 58,
+    "linesPct": 100,
+    "branchesPct": 96.47,
+    "thresholdsLines": 80,
+    "thresholdsBranches": 70
+  },
+  "manualPowerShell": {
+    "runtime": "7.6.9",
+    "initialFailure": "POST confirm sem ContentType explicito enviou form-urlencoded e retornou 415",
+    "correction": "application/json com body {} explicito no exemplo; API mantida",
+    "status": "PASSOU",
+    "orderId": "5aa5ba51-dd22-4703-9520-4aef2646ae48"
+  },
+  "performance": {
+    "min": 5.245731,
+    "avg": 15.164396433333332,
+    "med": 10.494341,
+    "p(90)": 19.444261400000013,
+    "p(95)": 28.970619899999985,
+    "max": 111.244488,
+    "p99": null,
+    "p99Explanation": "summary padrao nao exportou p99; sem serie bruta para calcula-lo",
+    "creationSamples": 30,
+    "allHttpRequests": 120,
+    "throughputAllHttpPerSecond": 3.881853472612108,
+    "errorRate": 0,
+    "checksRate": 1,
+    "VUs": 1,
+    "configuredDurationSeconds": 30
+  },
+  "lifecycle": {
+    "restartPreservedOrder": true,
+    "recreatedAppPreservedOrder": true,
+    "differentContainerIds": true,
+    "volumePreservedAfterDown": true,
+    "existingVolumesDeleted": false
+  },
+  "localStatus": "PASSOU",
+  "newRemotePublication": "BLOQUEADO: aguarda autorizacao especifica",
+  "newFinalCI": "BLOQUEADO: candidata nao publicada; CI anterior nao comprova novo SHA"
+}

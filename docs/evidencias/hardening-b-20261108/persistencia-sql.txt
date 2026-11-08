@@ -1,0 +1,9 @@
+startedAt=2026-11-08T17:14:50.181Z
+command=["docker","compose","exec","-T","db","sh","-c","psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT id,status,total_cents FROM orders ORDER BY created_at DESC LIMIT 5;\""]
+                  id                  |  status   | total_cents
+--------------------------------------+-----------+-------------
+ a632bac9-f72d-4f59-a548-2ae565555295 | CONFIRMED |        3000
+(1 row)
+
+
+exitCode=0

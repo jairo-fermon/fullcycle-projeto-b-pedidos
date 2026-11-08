@@ -1,6 +1,6 @@
 # Demonstração executável e preparação para defesa - B
 
-Este é o roteiro técnico do gate B, não um PDF definitivo de apresentação ou ensaio cronometrado. O aluno informou apresentação em 13/11/2026.
+Este é o roteiro técnico de demonstração, sem ensaio cronometrado comprovado. Instruções atuais: entrega/vídeo até 13/11/2026 e apresentações em 16/11/2026. O estado da candidata local e a reprodução diretamente do GitHub estão no [relatório de hardening](../RELATORIO_HARDENING_B.md); os resultados históricos abaixo não são novas medições.
 
 ## Preparação e execução
 
@@ -16,6 +16,8 @@ npm run demo
 O script de demonstração faz POST/GET/confirm/GET, verifica total e status e demonstra 409 na segunda confirmação e 404 para UUID inexistente. Cada execução cria um novo pedido, imprime o ID real e encerra com PASSOU se os asserts forem cumpridos. Não reutilizar um ID de exemplo como se fosse resultado novo.
 
 Para conferir SQL e observabilidade, executar os comandos do README. Mostrar o mesmo ID recém-criado no registro do banco, abrir `docs/openapi.yaml` e consultar `/metrics`. Os logs exibem reqId correlacionado com `x-request-id`, sem payload ou credenciais.
+
+Para provar persistência manualmente, seguir a seção “Comprovar persistência após reiniciar” do README na mesma sessão PowerShell. Ela reinicia somente app, aguarda saúde e consulta o mesmo pedido, sem remover o volume.
 
 Para reproduzir o gate completo com banco inicialmente vazio:
 

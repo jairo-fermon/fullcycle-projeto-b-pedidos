@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-11-08T17:14:01.236511+00:00",
+  "timezone": "America/Sao_Paulo",
+  "cloneCommand": [
+    "git",
+    "-c",
+    "credential.helper=",
+    "clone",
+    "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos.git",
+    "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos"
+  ],
+  "cloneExitCode": 0,
+  "source": "GitHub publico, nao clone local",
+  "checkout": "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos",
+  "cleanAtStart": true,
+  "HEAD": "a105fb340e66609ea54f781b5fd639663759964c",
+  "projectName": "fullcycle-b-hardening-20261108",
+  "port": 3002,
+  "existingVolumesDeleted": false
+}

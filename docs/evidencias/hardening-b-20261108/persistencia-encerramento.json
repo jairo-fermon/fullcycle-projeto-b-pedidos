@@ -1,0 +1,142 @@
+{
+  "startedAt": "2026-11-08T17:18:19.645343+00:00",
+  "timezone": "America/Sao_Paulo",
+  "checkout": "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos",
+  "projectName": "fullcycle-b-hardening-20261108",
+  "checks": [
+    {
+      "name": "container antes de recriar",
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "-q",
+        "app"
+      ],
+      "exitCode": 0,
+      "stdout": "d41521deb79aef54bfba513ee253e254c7bb46247fddaab6030297c6bb0203a0\n",
+      "stderr": "",
+      "status": "PASSOU"
+    },
+    {
+      "name": "recriar somente app sem build",
+      "command": [
+        "docker",
+        "compose",
+        "up",
+        "--no-build",
+        "--force-recreate",
+        "-d",
+        "--wait",
+        "app"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": " Container fullcycle-b-hardening-20261108-db-1  Running\n Container fullcycle-b-hardening-20261108-app-1  Recreate\n Container fullcycle-b-hardening-20261108-app-1  Recreated\n Container fullcycle-b-hardening-20261108-db-1  Waiting\n Container fullcycle-b-hardening-20261108-db-1  Healthy\n Container fullcycle-b-hardening-20261108-app-1  Starting\n Container fullcycle-b-hardening-20261108-app-1  Started\n Container fullcycle-b-hardening-20261108-db-1  Waiting\n Container fullcycle-b-hardening-20261108-app-1  Waiting\n Container fullcycle-b-hardening-20261108-db-1  Healthy\n Container fullcycle-b-hardening-20261108-app-1  Healthy\n",
+      "status": "PASSOU"
+    },
+    {
+      "name": "container depois de recriar",
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "-q",
+        "app"
+      ],
+      "exitCode": 0,
+      "stdout": "f375cb1df28e2fa60d2eb71265197d4a73cc54410b406854cae4d2a8cfd44a8c\n",
+      "stderr": "",
+      "status": "PASSOU"
+    },
+    {
+      "name": "SQL do mesmo pedido",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "db",
+        "sh",
+        "-c",
+        "psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT id,status,total_cents FROM orders WHERE id='5aa5ba51-dd22-4703-9520-4aef2646ae48'; SELECT count(*) AS migrations FROM schema_migrations;\""
+      ],
+      "exitCode": 0,
+      "stdout": "                  id                  |  status   | total_cents \n--------------------------------------+-----------+-------------\n 5aa5ba51-dd22-4703-9520-4aef2646ae48 | CONFIRMED |        3000\n(1 row)\n\n migrations \n------------\n          1\n(1 row)\n\n",
+      "stderr": "",
+      "status": "PASSOU"
+    },
+    {
+      "name": "volume antes de encerrar",
+      "command": [
+        "docker",
+        "volume",
+        "inspect",
+        "--format",
+        "{{.Name}}",
+        "fullcycle-b-hardening-20261108_orders-data"
+      ],
+      "exitCode": 0,
+      "stdout": "fullcycle-b-hardening-20261108_orders-data\n",
+      "stderr": "",
+      "status": "PASSOU"
+    },
+    {
+      "name": "encerrar preservando volumes",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "test",
+        "--profile",
+        "tools",
+        "down"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": " Container fullcycle-b-hardening-20261108-app-1  Stopping\n Container fullcycle-b-hardening-20261108-test-db-1  Stopping\n Container fullcycle-b-hardening-20261108-app-1  Stopped\n Container fullcycle-b-hardening-20261108-app-1  Removing\n Container fullcycle-b-hardening-20261108-app-1  Removed\n Container fullcycle-b-hardening-20261108-db-1  Stopping\n Container fullcycle-b-hardening-20261108-test-db-1  Stopped\n Container fullcycle-b-hardening-20261108-test-db-1  Removing\n Container fullcycle-b-hardening-20261108-test-db-1  Removed\n Container fullcycle-b-hardening-20261108-db-1  Stopped\n Container fullcycle-b-hardening-20261108-db-1  Removing\n Container fullcycle-b-hardening-20261108-db-1  Removed\n Network fullcycle-b-hardening-20261108_default  Removing\n Network fullcycle-b-hardening-20261108_default  Removed\n",
+      "status": "PASSOU"
+    },
+    {
+      "name": "volume preservado depois de encerrar",
+      "command": [
+        "docker",
+        "volume",
+        "inspect",
+        "--format",
+        "{{.Name}}",
+        "fullcycle-b-hardening-20261108_orders-data"
+      ],
+      "exitCode": 0,
+      "stdout": "fullcycle-b-hardening-20261108_orders-data\n",
+      "stderr": "",
+      "status": "PASSOU"
+    },
+    {
+      "name": "containers auxiliares restantes",
+      "command": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=fullcycle-b-hardening-20261108"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASSOU"
+    }
+  ],
+  "recreation": {
+    "oldContainer": "d41521deb79aef54bfba513ee253e254c7bb46247fddaab6030297c6bb0203a0",
+    "newContainer": "f375cb1df28e2fa60d2eb71265197d4a73cc54410b406854cae4d2a8cfd44a8c",
+    "sameOrder": true,
+    "orderId": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+    "status": "CONFIRMED",
+    "totalCents": 3000
+  },
+  "volumePreserved": true,
+  "volumeDeletionRequested": false,
+  "status": "PASSOU",
+  "finishedAt": "2026-11-08T17:18:28.594464+00:00"
+}

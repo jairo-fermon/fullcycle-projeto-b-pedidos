@@ -32,3 +32,7 @@ O aluno ainda precisa revisar o ADR, compreender o cálculo monetário e a trans
 ## Gate de auditoria confirmado
 
 O aluno aprovou literalmente o B e o A, encerrando os gates de implementação, e autorizou auditoria/apresentações. A pré-auditoria repetiu o ciclo em checkout limpo, registrou as novas medições e corrigiu textos históricos de estado. Os resultados não constituem avaliação independente. Ensaio, aprendizado, tempo real de fala e Moodle não estão comprovados. A assistência continua declarada.
+
+## Hardening B autorizado em 08/11/2026
+
+O aluno enviou `APROVO O DIAGNÓSTICO; INICIAR HARDENING DO B`, após os prompts de hardening e auditoria Docker. Escopo: somente B, correções P0 e P1 justificadas, preservando A, dados existentes e histórico. A IA propôs completar clone/preparo no README, demonstrar persistência em PowerShell e separar CI histórico da candidata nova. Reprodução em clone obtido do GitHub, com nome Compose e porta próprios e senha aleatória independente. Nenhuma autorização de publicação nova, hardening do A ou envio ao Moodle é presumida. Resultados reais e limitações são registrados no relatório específico.

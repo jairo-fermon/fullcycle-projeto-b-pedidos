@@ -1,0 +1,258 @@
+{
+  "startedAt": "2026-11-08T17:14:20.466Z",
+  "timeZone": "America/Sao_Paulo",
+  "host": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 16893386752,
+    "node": "v24.19.0"
+  },
+  "sourceCommit": "a105fb340e66609ea54f781b5fd639663759964c",
+  "cleanDatabaseRequested": false,
+  "checks": [
+    {
+      "name": "ambiente-local",
+      "startedAt": "2026-11-08T17:14:20.562Z",
+      "finishedAt": "2026-11-08T17:14:20.628Z",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/init-env.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "docker-versao",
+      "startedAt": "2026-11-08T17:14:20.628Z",
+      "finishedAt": "2026-11-08T17:14:20.797Z",
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Client.Version}} / {{.Server.Version}}"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-versao",
+      "startedAt": "2026-11-08T17:14:20.797Z",
+      "finishedAt": "2026-11-08T17:14:21.056Z",
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-config",
+      "startedAt": "2026-11-08T17:14:21.057Z",
+      "finishedAt": "2026-11-08T17:14:21.429Z",
+      "command": [
+        "docker",
+        "compose",
+        "config",
+        "--quiet"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "subida-limpa",
+      "startedAt": "2026-11-08T17:14:21.429Z",
+      "finishedAt": "2026-11-08T17:14:31.994Z",
+      "command": [
+        "docker",
+        "compose",
+        "up",
+        "--build",
+        "-d",
+        "--wait"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "qualidade",
+      "startedAt": "2026-11-08T17:14:31.994Z",
+      "finishedAt": "2026-11-08T17:14:47.959Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "test",
+        "run",
+        "--build",
+        "--rm",
+        "tests",
+        "sh",
+        "-c",
+        "npm run lint && npm run typecheck && npm run build && npm run openapi:lint && npm test"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "demonstracao",
+      "startedAt": "2026-11-08T17:14:47.969Z",
+      "finishedAt": "2026-11-08T17:14:48.479Z",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--env-file=.env",
+        "scripts/demo.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "reinicio-app",
+      "startedAt": "2026-11-08T17:14:48.543Z",
+      "finishedAt": "2026-11-08T17:14:49.712Z",
+      "command": [
+        "docker",
+        "compose",
+        "restart",
+        "app"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "persistencia-sql",
+      "startedAt": "2026-11-08T17:14:50.181Z",
+      "finishedAt": "2026-11-08T17:14:50.825Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "db",
+        "sh",
+        "-c",
+        "psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT id,status,total_cents FROM orders ORDER BY created_at DESC LIMIT 5;\""
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "logs-json",
+      "startedAt": "2026-11-08T17:14:50.867Z",
+      "finishedAt": "2026-11-08T17:14:51.326Z",
+      "command": [
+        "docker",
+        "compose",
+        "logs",
+        "--no-color",
+        "--no-log-prefix",
+        "app"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "node-container",
+      "startedAt": "2026-11-08T17:14:51.331Z",
+      "finishedAt": "2026-11-08T17:14:51.796Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "app",
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "postgres-container",
+      "startedAt": "2026-11-08T17:14:51.796Z",
+      "finishedAt": "2026-11-08T17:14:52.244Z",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "db",
+        "postgres",
+        "--version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "k6-versao",
+      "startedAt": "2026-11-08T17:14:52.244Z",
+      "finishedAt": "2026-11-08T17:14:53.626Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "tools",
+        "run",
+        "--rm",
+        "--no-deps",
+        "k6",
+        "version"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "k6-terminal",
+      "startedAt": "2026-11-08T17:14:53.627Z",
+      "finishedAt": "2026-11-08T17:15:27.629Z",
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "tools",
+        "run",
+        "--rm",
+        "k6"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    },
+    {
+      "name": "compose-status",
+      "startedAt": "2026-11-08T17:15:27.629Z",
+      "finishedAt": "2026-11-08T17:15:28.135Z",
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "exitCode": 0,
+      "status": "PASSOU"
+    }
+  ],
+  "coverage": {
+    "lines": 100,
+    "branches": 96.47,
+    "statements": 99.33,
+    "functions": 100
+  },
+  "persistence": {
+    "orderId": "a632bac9-f72d-4f59-a548-2ae565555295",
+    "status": "CONFIRMED",
+    "totalCents": 3000,
+    "preservedAfterRestart": true
+  },
+  "performance": {
+    "createP95ms": 28.970619899999985,
+    "createMaxMs": 111.244488,
+    "httpRequests": 120,
+    "iterations": 30,
+    "errorRate": 0
+  },
+  "status": "PASSOU",
+  "finishedAt": "2026-11-08T17:15:28.136Z"
+}

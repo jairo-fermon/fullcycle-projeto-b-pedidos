@@ -85,7 +85,7 @@ paths:
       tags: [Pedidos]
       operationId: confirmOrder
       summary: Confirmar uma única vez
-      description: Transição PENDING para CONFIRMED. Uma segunda confirmação recebe 409, inclusive sob concorrência. Não recebe corpo de negócio.
+      description: Transição PENDING para CONFIRMED. Uma segunda confirmação recebe 409, inclusive sob concorrência. Não exige corpo de negócio. No PowerShell, enviar application/json com objeto vazio evita o Content-Type padrão de formulário, rejeitado com 415.
       responses:
         '200':
           description: Pedido confirmado com confirmedAt preenchido.
@@ -111,6 +111,8 @@ paths:
                 $ref: '#/components/schemas/Error'
         '500':
           $ref: '#/components/responses/InternalError'
+        '415':
+          $ref: '#/components/responses/InvalidInput'
   /health:
     get:
       tags: [Operacao]

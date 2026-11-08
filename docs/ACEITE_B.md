@@ -1,5 +1,7 @@
 # Gate de aceite - Projeto B
 
+Registro da validação anterior. O estado da candidata de hardening autorizada em 08/11 está no [RELATORIO_HARDENING_B](../RELATORIO_HARDENING_B.md), incluindo reprodução pelo GitHub e situação de publicação/CI. Resultados abaixo permanecem identificados por suas execuções históricas.
+
 Data: 08/11/2026. Ciclo canônico: 11:43:28-11:45:00, America/Sao_Paulo (UTC-03:00).
 Revisão de código local validada: `10caa5fd38b9c45f29e6737c52ed306d1ee0123f`.
 Repositório criado pelo aluno: https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos (público, metadados conferidos pelo conector).

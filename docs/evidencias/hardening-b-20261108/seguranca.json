@@ -1,0 +1,10 @@
+{
+  "collectedAt": "2026-11-08T17:23:07.803731+00:00",
+  "filesReviewed": 100,
+  "realEnvTracked": false,
+  "localPasswordMatches": [],
+  "credentialPatternFindings": [],
+  "brokenLocalMarkdownLinks": [],
+  "status": "PASSOU",
+  "scope": "Arquivos versionados e candidatos, segredos locais conhecidos e padroes de credencial; nao garantia matematica contra qualquer segredo desconhecido."
+}

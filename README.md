@@ -4,7 +4,9 @@ API de domínio único para criar, consultar e confirmar pedidos. Trabalho indiv
 
 ## Estado e evidências
 
-Validação técnica local e remota concluída em 08/11/2026. [Repositório público](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos) e [execução real verde do CI](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490), commit `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`. Resultado local: 58 testes, cobertura de 100% das linhas e 96,47% dos branches; smoke final com p95 de criação 127,73 ms e zero falhas. Consulte a [matriz de aceite](docs/ACEITE_B.md) para evidências e limites. O aluno aprovou B e A e autorizou auditoria/apresentações. [Fechamento da pré-auditoria e repetição limpa](docs/FECHAMENTO_AUDITORIA.md). Envio ao Moodle ainda não efetuado.
+Baseline pública conferida em 08/11/2026: [repositório](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos), commit `a105fb340e66609ea54f781b5fd639663759964c` e [CI dessa revisão: success](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42499107175). Essa execução aprovou 58 testes, com 100% de linhas e 96,47% de branches. O [relatório de hardening do B](RELATORIO_HARDENING_B.md) distingue a candidata local, a reprodução diretamente do GitHub e a publicação/CI ainda dependentes de autorização. Um CI histórico não comprova um commit novo.
+
+Os smokes anteriores de 127,73 ms e 14,89 ms permanecem preservados em [desempenho](docs/desempenho.md) e no [fechamento anterior](docs/FECHAMENTO_AUDITORIA.md), sem alegação de otimização entre execuções. Consulte também a [matriz de aceite](docs/ACEITE_B.md). Ensaio e envio ao Moodle ainda não têm comprovante.
 
 ## Pré-requisitos
 
@@ -12,6 +14,18 @@ Validação técnica local e remota concluída em 08/11/2026. [Repositório púb
 - Porta local 3000 livre (ou configure `PORT` no `.env`). O PostgreSQL não publica porta para a máquina.
 - Na primeira preparação, dentro desta pasta, execute `npm run env:init`. Esse comando usa apenas Node, cria `.env` com senha aleatória e não sobrescreve arquivo existente. O arquivo real é ignorado pelo Git. `.env.example` documenta nomes e valores de exemplo sem senha fixa.
 - Obter as imagens e dependências exige acesso à internet na primeira execução. Não é necessário instalar PostgreSQL ou k6 no Windows.
+
+## Obter o projeto do GitHub
+
+Em uma pasta onde deseja guardar o projeto, execute no PowerShell:
+
+```powershell
+git clone https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos.git
+Set-Location .\fullcycle-projeto-b-pedidos
+npm run env:init
+```
+
+Git é necessário para o clone. Não precisa executar `npm install` para preparar o `.env`: `env:init` usa apenas recursos nativos do Node. A senha é aleatória e uma configuração existente é preservada. Depois, execute o comando de subida abaixo. A criação do `.env` é a preparação explícita, não uma etapa oculta de inicialização.
 
 ## Subir com um comando
 
@@ -44,11 +58,29 @@ $body = @{ items = @(@{ sku='CANETA-AZUL'; quantity=2; unitPriceCents=1500 }) } 
 $order = Invoke-RestMethod -Method Post -Uri "$baseUrl/orders" -ContentType 'application/json' -Body $body
 $order
 Invoke-RestMethod "$baseUrl/orders/$($order.id)"
-Invoke-RestMethod -Method Post "$baseUrl/orders/$($order.id)/confirm"
+Invoke-RestMethod -Method Post "$baseUrl/orders/$($order.id)/confirm" -ContentType 'application/json' -Body '{}'
 Invoke-RestMethod "$baseUrl/orders/$($order.id)"
 ```
 
 Resultado esperado do exemplo: total de 3.000 centavos, inicialmente `PENDING` e depois `CONFIRMED`. São expectativas verificáveis; os resultados efetivamente executados estão em `docs/evidencias/`. Uma segunda confirmação retorna HTTP 409.
+
+Na confirmação, o JSON vazio é explícito para evitar que o PowerShell envie seu Content-Type padrão de formulário, que a API rejeita com 415. A operação não exige dados de negócio no corpo.
+
+### Comprovar persistência após reiniciar
+
+Na mesma sessão PowerShell do exemplo, mantendo `$baseUrl` e `$order`:
+
+```powershell
+docker compose restart app
+docker compose up -d --wait app
+$persisted = Invoke-RestMethod "$baseUrl/orders/$($order.id)"
+$persisted
+if ($persisted.id -ne $order.id -or $persisted.status -ne 'CONFIRMED' -or $persisted.totalCents -ne 3000) {
+    throw 'O pedido esperado não foi recuperado após reiniciar a aplicação.'
+}
+```
+
+O segundo comando aguarda a saúde da aplicação antes da consulta. Reiniciar o app mantém o contêiner e o banco; recriar somente o contêiner do app troca o processo/contêiner, preservando os dados no PostgreSQL. Remover o volume do banco apaga seus arquivos persistentes. Para encerrar os serviços mantendo dados, use `docker compose down`, sem opção de remoção de volumes.
 
 Conferir persistência diretamente no banco, sem imprimir senha:
 
@@ -105,7 +137,7 @@ O mínimo declarado para o código em `src/` é **80% linhas e 70% branches**, f
 
 GitHub Actions faz npm ci, lint, typecheck, build, lint OpenAPI e testes/coverage com PostgreSQL isolado. A senha de teste da CI é derivada do identificador da execução, usada somente no serviço efêmero; não é credencial de ambiente real.
 
-A execução remota acima terminou com `success`, e o job registrou os mesmos 58 testes e cobertura do ciclo limpo local. Metadados e trechos reais em `docs/evidencias/ci-github.json` e `ci-testes-resumo.txt`. A publicação autorizada usou o conector da conta correta; os commits remotos têm hashes próprios. O Git confirmou árvore de arquivos idêntica à candidata local, conforme o registro de publicação.
+A execução remota da baseline identificada no início terminou com `success`, com 58 testes e os percentuais informados. Registros de publicação mais antigos em `docs/evidencias/ci-github.json` e `ci-testes-resumo.txt` continuam históricos. Para a nova candidata, seguir o [relatório de hardening](RELATORIO_HARDENING_B.md): publicar somente com autorização e confirmar CI no SHA efetivamente publicado. O [histórico do workflow](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/workflows/ci.yml) permite consultar as execuções sem atribuir um resultado antigo a uma revisão nova.
 
 ## Logs, métrica e SLO
 
@@ -141,5 +173,5 @@ Resultado resumido real é escrito em `docs/evidencias/k6-summary.json`. Cada ex
 
 - [OpenAPI](docs/openapi.yaml), [ADR](docs/adr/0001-decisao.md), [desempenho](docs/desempenho.md), [aceite](docs/ACEITE_B.md), [roteiro de demonstração](docs/DEMONSTRACAO.md).
 - [Contribuição humana](CONTRIBUTORS.md) e [assistência de IA/decisões](docs/ia.md).
-- Apresentação informada pelo aluno: 13/11/2026. Meta de implementação e validação: 08/11/2026. Envio ao Moodle não foi efetuado por este projeto.
+- Prazo de entrega/vídeo: 13/11/2026; apresentações em 16/11/2026, conforme instruções atuais. Meta de hardening: 08/11/2026. Envio ao Moodle não foi efetuado por este projeto.
 - Projeto A não é requisito para entregar B. Ambos já foram aprovados pelo aluno; auditoria e materiais de defesa estão no pacote final separado. Ensaio e aprendizagem não são presumidos.

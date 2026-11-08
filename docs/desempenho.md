@@ -56,3 +56,11 @@ Código validado: commit local `10caa5fd38b9c45f29e6737c52ed306d1ee0123f`, corre
 ## Limitações
 
 Smoke verifica funcionamento e latência sob baixa carga; não comprova escalabilidade. A quantidade pequena de amostras torna o p95 sensível a inicialização, disco e outras tarefas do computador. Não há comparação antes/depois nem três estágios no B, pois são requisitos do A. Meta declarada não significa resultado atingido.
+
+## Reprodução do hardening B em 08/11/2026
+
+Nova execução em clone obtido diretamente do GitHub no SHA `a105fb340e66609ea54f781b5fd639663759964c`, com PostgreSQL/volume novos, porta 3002 e nome Compose próprio. Mesmo código e script do B; sem --clean ou exclusão de volumes. Janela do ciclo UTC 2026-11-08T17:14:20.466Z a 2026-11-08T17:15:28.136Z. Detalhes em [relatório do hardening](../RELATORIO_HARDENING_B.md) e [evidências identificadas](evidencias/hardening-b-20261108/LEIA-ME.md).
+
+Smoke: 1 VU, 30 segundos configurados, 30 iterações/30 amostras de criação, 120 chamadas HTTP, zero erros e todos os checks. Mediana 10.494341 ms, p95 criação **28.970620 ms**, máximo 111.244488 ms e throughput 3.881853 requisições/s. p99 não foi exportado e não foi calculado artificialmente. Thresholds atendidos com exit code 0.
+
+Os resultados anteriores permanecem preservados. Não houve alteração de algoritmo ou otimização: diferenças de latência são variações entre execuções locais de amostra pequena, não ganho causal. A correção da etapa é no comando PowerShell de confirmação e na documentação, validada separadamente. Publicação e CI novas permanecem dependentes de autorização.

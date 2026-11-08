@@ -1,0 +1,6 @@
+startedAt=2026-11-08T17:14:48.543Z
+command=["docker","compose","restart","app"]
+ Container fullcycle-b-hardening-20261108-app-1  Restarting
+ Container fullcycle-b-hardening-20261108-app-1  Started
+
+exitCode=0

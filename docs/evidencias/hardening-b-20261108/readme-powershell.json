@@ -1,0 +1,137 @@
+{
+  "startedAt": "2026-11-08T17:17:02.0597796Z",
+  "timeZone": "America/Sao_Paulo",
+  "command": "pwsh -File verificar-readme.ps1",
+  "checkout": "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos",
+  "readmeAddressAdaptation": "PORT=3002 em .env isolado; exemplo padrao usa 3000",
+  "projectName": "fullcycle-b-hardening-20261108",
+  "checks": [
+    {
+      "status": "PASSOU",
+      "name": "env:init preserva configuracao",
+      "output": "\r\n> fullcycle-projeto-b-pedidos@1.0.0 env:init\r\n> node scripts/init-env.mjs\r\n\r\n.env existente preservado.\r\n"
+    },
+    {
+      "final": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "CONFIRMED",
+        "totalCents": 3000,
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": "2026-11-08T17:17:02.713Z"
+      },
+      "status": "PASSOU",
+      "lookup": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "PENDING",
+        "totalCents": 3000,
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": null
+      },
+      "creation": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "PENDING",
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "totalCents": 3000,
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": null
+      },
+      "confirmed": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "CONFIRMED",
+        "totalCents": 3000,
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": "2026-11-08T17:17:02.713Z"
+      },
+      "name": "exemplo PowerShell do README"
+    },
+    {
+      "status": "PASSOU",
+      "waitOutput": " Container fullcycle-b-hardening-20261108-db-1  Running\r\n Container fullcycle-b-hardening-20261108-app-1  Running\r\n Container fullcycle-b-hardening-20261108-db-1  Waiting\r\n Container fullcycle-b-hardening-20261108-db-1  Healthy\r\n Container fullcycle-b-hardening-20261108-app-1  Waiting\r\n Container fullcycle-b-hardening-20261108-db-1  Waiting\r\n Container fullcycle-b-hardening-20261108-db-1  Healthy\r\n Container fullcycle-b-hardening-20261108-app-1  Healthy\r\n",
+      "restartOutput": " Container fullcycle-b-hardening-20261108-app-1  Restarting\r\n Container fullcycle-b-hardening-20261108-app-1  Started\r\n",
+      "name": "persistencia apos restart do app",
+      "after": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "CONFIRMED",
+        "totalCents": 3000,
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": "2026-11-08T17:17:02.713Z"
+      },
+      "before": {
+        "id": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+        "status": "CONFIRMED",
+        "totalCents": 3000,
+        "items": [
+          {
+            "sku": "CANETA-AZUL",
+            "quantity": 2,
+            "unitPriceCents": 1500
+          }
+        ],
+        "createdAt": "2026-11-08T17:17:02.698Z",
+        "confirmedAt": "2026-11-08T17:17:02.713Z"
+      }
+    },
+    {
+      "actual": 400,
+      "body": "{\"error\":{\"code\":\"INVALID_INPUT\",\"message\":\"Requisição inválida.\",\"requestId\":\"91f25949-5a27-4cd7-86a8-069c9c0937f7\"}}",
+      "expected": 400,
+      "name": "/orders/invalido",
+      "status": "PASSOU"
+    },
+    {
+      "actual": 404,
+      "body": "{\"error\":{\"code\":\"NOT_FOUND\",\"message\":\"Pedido não encontrado.\",\"requestId\":\"c4a7fc97-9b4f-48ad-bd71-806338f09f0a\"}}",
+      "expected": 404,
+      "name": "/orders/00000000-0000-4000-8000-000000000000",
+      "status": "PASSOU"
+    },
+    {
+      "actual": 409,
+      "body": "{\"error\":{\"code\":\"ALREADY_CONFIRMED\",\"message\":\"O pedido já foi confirmado.\",\"requestId\":\"24d831e9-cf6d-4f02-8a41-d0817b36cdea\"}}",
+      "expected": 409,
+      "name": "confirmacao repetida",
+      "status": "PASSOU"
+    },
+    {
+      "status": "PASSOU",
+      "name": "metrica operacional real e rota normalizada"
+    }
+  ],
+  "orderId": "5aa5ba51-dd22-4703-9520-4aef2646ae48",
+  "status": "PASSOU",
+  "finishedAt": "2026-11-08T17:17:07.2602035Z"
+}

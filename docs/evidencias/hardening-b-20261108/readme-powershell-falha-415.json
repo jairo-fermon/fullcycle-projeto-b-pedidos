@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-11-08T17:16:31.3224971Z",
+  "timeZone": "America/Sao_Paulo",
+  "command": "pwsh -File verificar-readme.ps1",
+  "checkout": "C:\\Users\\ELIELETRO\\Desktop\\ChatGPT\\fullcycle-projeto-b-pedidos\\tmp\\hardening-20261108\\fullcycle-projeto-b-pedidos",
+  "readmeAddressAdaptation": "PORT=3002 em .env isolado; exemplo padrao usa 3000",
+  "projectName": "fullcycle-b-hardening-20261108",
+  "checks": [
+    {
+      "name": "env:init preserva configuracao",
+      "output": "\r\n> fullcycle-projeto-b-pedidos@1.0.0 env:init\r\n> node scripts/init-env.mjs\r\n\r\n.env existente preservado.\r\n",
+      "status": "PASSOU"
+    }
+  ],
+  "status": "FALHOU",
+  "failure": "Response status code does not indicate success: 415 (Unsupported Media Type).",
+  "finishedAt": "2026-11-08T17:16:32.0248642Z"
+}
