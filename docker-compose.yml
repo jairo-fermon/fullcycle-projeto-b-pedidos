@@ -1,0 +1,84 @@
+name: fullcycle-b-pedidos
+services:
+  db:
+    image: postgres:17.11-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-orders}
+      POSTGRES_USER: ${POSTGRES_USER:-orders}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Execute npm run env:init antes da primeira subida}
+    volumes:
+      - orders-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  app:
+    build:
+      context: .
+      target: runtime
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: ${POSTGRES_DB:-orders}
+      PGUSER: ${POSTGRES_USER:-orders}
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Execute npm run env:init}
+      PORT: ${PORT:-3000}
+      HOST: 0.0.0.0
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - '127.0.0.1:${PORT:-3000}:${PORT:-3000}'
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, 'fetch("http://127.0.0.1:"+process.env.PORT+"/health").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    init: true
+    restart: unless-stopped
+  test-db:
+    image: postgres:17.11-alpine
+    profiles: [test]
+    environment:
+      POSTGRES_DB: orders_test
+      POSTGRES_USER: ${POSTGRES_USER:-orders}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Execute npm run env:init}
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d orders_test']
+      interval: 2s
+      timeout: 3s
+      retries: 20
+  tests:
+    profiles: [test]
+    build:
+      context: .
+      target: test
+    environment:
+      PGHOST: test-db
+      PGPORT: 5432
+      PGDATABASE: orders_test
+      PGUSER: ${POSTGRES_USER:-orders}
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Execute npm run env:init}
+    volumes:
+      - ./coverage:/app/coverage
+    depends_on:
+      test-db:
+        condition: service_healthy
+  k6:
+    image: grafana/k6:1.3.0
+    profiles: [tools]
+    environment:
+      BASE_URL: http://app:${PORT:-3000}
+    volumes:
+      - ./scripts/k6-smoke.js:/scripts/smoke.js:ro
+      - ./docs/evidencias:/results
+    command: [run, --summary-export=/results/k6-summary.json, /scripts/smoke.js]
+    depends_on:
+      app:
+        condition: service_healthy
+volumes:
+  orders-data:
