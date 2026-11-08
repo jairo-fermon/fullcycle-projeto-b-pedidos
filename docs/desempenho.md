@@ -51,7 +51,7 @@ Na validação final após limpeza do banco, o p95 foi maior, enquanto o máximo
 3. Para repetir a validação completa desde banco vazio: `npm run validate:local -- --clean`. **Esse último comando apaga somente os dados locais do projeto B**, inclusive pedidos de demonstração; não usar se quiser conservá-los.
 4. Consultar `docs/evidencias/validacao-local.json`, saídas datadas por etapa e `k6-summary.json`. Novas execuções substituem esses arquivos; preservar versões anteriores se precisar compará-las.
 
-Código validado: commit local `10caa5fd38b9c45f29e6737c52ed306d1ee0123f`. Commits posteriores de documentação/evidência não representam uma mudança de algoritmo de negócio ou otimização de desempenho. CI remoto ainda não foi executado nesta etapa.
+Código validado: commit local `10caa5fd38b9c45f29e6737c52ed306d1ee0123f`, correspondente ao commit remoto de testes `f457069e16b5bf733b1c62b2690db6caf0f20d33`. A candidata completa publicada em `c09d20489f1c6b77e1b74cbee833c3526ef9d95b` teve sua árvore comparada com a candidata local: conteúdo idêntico. [CI remoto concluído com sucesso](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490). Commits de documentação/evidência não representam mudança do algoritmo de negócio ou otimização de desempenho.
 
 ## Limitações
 

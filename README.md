@@ -4,7 +4,7 @@ API de domínio único para criar, consultar e confirmar pedidos. Trabalho indiv
 
 ## Estado e evidências
 
-Implementação em validação local em 08/11/2026. Consulte [matriz de aceite](docs/ACEITE_B.md) para resultados reais e bloqueios. O aluno criou o [repositório público](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos). Envio do código e CI remoto permanecem pendentes de autorização e execução. A existência de `.github/workflows/ci.yml` não significa CI verde.
+Validação técnica local e remota concluída em 08/11/2026. [Repositório público](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos) e [execução real verde do CI](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490), commit `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`. Resultado local: 58 testes, cobertura de 100% das linhas e 96,47% dos branches; smoke final com p95 de criação 127,73 ms e zero falhas. Consulte a [matriz de aceite](docs/ACEITE_B.md) para evidências, limites e revisão humana pendente. Envio ao Moodle ainda não efetuado.
 
 ## Pré-requisitos
 
@@ -104,6 +104,8 @@ Alternativa local (desenvolvimento): `npm ci`, `npm run lint`, `npm run typechec
 O mínimo declarado para o código em `src/` é **80% linhas e 70% branches**, fiscalizado pelo Vitest. São metas nossas; o professor exige um mínimo declarado, sem impor esses números. Não há exclusões de arquivos de `src/`. Bootstrap `scripts/start.mjs` é validado pela subida real do Compose e não participa do percentual de `src/`. Os testes verificam cálculo, limites, erros HTTP, rollback, concorrência, migrations, logs sem dados sensíveis, métricas e schemas das respostas reais contra o OpenAPI.
 
 GitHub Actions faz npm ci, lint, typecheck, build, lint OpenAPI e testes/coverage com PostgreSQL isolado. A senha de teste da CI é derivada do identificador da execução, usada somente no serviço efêmero; não é credencial de ambiente real.
+
+A execução remota acima terminou com `success`, e o job registrou os mesmos 58 testes e cobertura do ciclo limpo local. Metadados e trechos reais em `docs/evidencias/ci-github.json` e `ci-testes-resumo.txt`. A publicação autorizada usou o conector da conta correta; os commits remotos têm hashes próprios. O Git confirmou árvore de arquivos idêntica à candidata local, conforme o registro de publicação.
 
 ## Logs, métrica e SLO
 

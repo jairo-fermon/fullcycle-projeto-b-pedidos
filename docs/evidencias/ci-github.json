@@ -1,0 +1,104 @@
+{
+  "collectedAt": "2026-11-08T14:55:44.698Z",
+  "repository": "jairo-fermon/fullcycle-projeto-b-pedidos",
+  "run": {
+    "id": 42492067490,
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "c09d20489f1c6b77e1b74cbee833c3526ef9d95b",
+    "url": "https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490",
+    "createdAt": "2026-11-08T14:54:09Z",
+    "updatedAt": "2026-11-08T14:54:47Z"
+  },
+  "jobs": [
+    {
+      "id": 128766393669,
+      "name": "quality",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run typecheck",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run openapi:lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "publication": {
+    "method": "Conector GitHub autenticado como jairo-fermon, autorizado pelo aluno. Commits criados na data real, sem copiar autoria/data historica.",
+    "localCandidate": "27324d2a4bc19a13843d74b08827d13847448765",
+    "remoteCandidate": "c09d20489f1c6b77e1b74cbee833c3526ef9d95b",
+    "identicalTreeSha": "1304347c5700a3d35dd1a3d18aeffb0e8e977007",
+    "comparisonCommand": "git rev-parse 27324d2^{tree}; git rev-parse origin/main^{tree}",
+    "localToRemote": [
+      {
+        "local": "a0e24d14187d6d8292b9d5a9be2f6fd01c9445f7",
+        "remote": "27621822fb7e7c1274b679c013b082d4152b646a"
+      },
+      {
+        "local": "10caa5fd38b9c45f29e6737c52ed306d1ee0123f",
+        "remote": "f457069e16b5bf733b1c62b2690db6caf0f20d33"
+      },
+      {
+        "local": "27324d2a4bc19a13843d74b08827d13847448765",
+        "remote": "c09d20489f1c6b77e1b74cbee833c3526ef9d95b"
+      }
+    ]
+  }
+}

@@ -14,7 +14,7 @@ Data: 08/11/2026. Assistente: Codex. Não registrar credenciais, tokens, e-mail 
 
 - Trabalho individual.
 - Domínio Pedidos e plano do B aprovados expressamente: “CONFIRMO PEDIDOS. APROVO O PLANO; INICIAR O PROJETO B.”
-- Identidade Git existente confirmada pelo aluno; criação de repositório autorizada, sem acesso automático a push público.
+- Identidade Git existente confirmada pelo aluno; criação de repositório autorizada. O aluno criou o repositório público e depois autorizou expressamente: “Autorizo publicar o Projeto B e executar o CI”.
 - Apresentação informada para 13/11; restauração do Docker autorizada se necessária por não haver uso atual informado.
 
 ## Propostas e trabalho da IA
@@ -23,6 +23,7 @@ Data: 08/11/2026. Assistente: Codex. Não registrar credenciais, tokens, e-mail 
 - Geração de implementação, migrations, testes, OpenAPI, CI, scripts de demonstração e documentação.
 - Verificações reais e correções a partir de erros encontrados; resultados finais registrados na matriz de aceite, sem tratar tentativas malsucedidas como sucesso.
 - Investigação do Docker Desktop, que falhou antes de executar a aplicação, e revisão de versões das dependências disponíveis.
+- Publicação pelo conector autenticado na conta correta, sem utilizar a outra conta armazenada no terminal. Commits remotos reais têm hashes/datas da publicação; árvore comparada com os arquivos locais e identidade conferida, sem simular autoria ou datas de trabalho manual. CI success e números reais registrados nas evidências.
 
 ## Decisões ainda a validar pelo aluno
 

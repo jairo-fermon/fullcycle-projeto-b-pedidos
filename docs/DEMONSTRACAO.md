@@ -33,7 +33,7 @@ npm run validate:local -- --clean
 - Rollback real: restrição do banco rejeita item inválido e não sobra pedido parcial.
 - Smoke final: 116 requisições, 29 iterações, zero erro; p95 POST /orders 127,73 ms, máximo 189,29 ms.
 - Uma execução exploratória teve amostra máxima de 1,74 segundo; ela está registrada no relatório e não foi apagada para melhorar a narrativa.
-- CI local validado. CI remoto permanece BLOQUEADO até envio autorizado e execução no GitHub; não dizer que está verde só porque existe workflow.
+- CI local validado e [CI remoto verde confirmado](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490), com 58 testes e a mesma cobertura. Mostrar esse link real, não apenas a existência do workflow.
 
 Fonte canônica: `docs/evidencias/validacao-local.json`; relatórios específicos de cada etapa na mesma pasta. A documentação de desempenho explica a pequena amostra e o alcance do SLO.
 

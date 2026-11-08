@@ -1,0 +1,8 @@
+Fonte: logs reais do job 128766393669; execucao 42492067490; commit c09d20489f1c6b77e1b74cbee833c3526ef9d95b.
+Consulta: conector GitHub fetch_workflow_job_logs(repo_full_name=jairo-fermon/fullcycle-projeto-b-pedidos, job_id=128766393669).
+Trechos selecionados com cores ANSI removidas; valores e timestamps originais preservados:
+2026-11-08T14:54:30.1759911Z found 0 vulnerabilities
+2026-11-08T14:54:40.0259219Z  Test Files  5 passed (5)
+2026-11-08T14:54:40.0260473Z       Tests  58 passed (58)
+2026-11-08T14:54:40.0294894Z  % Coverage report from v8
+2026-11-08T14:54:40.0328258Z All files          |   99.33 |    96.47 |     100 |     100 |                   

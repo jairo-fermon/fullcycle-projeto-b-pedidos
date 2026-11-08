@@ -16,7 +16,8 @@ O validador grava saídas reais; cada TXT canônico começa com horário e coman
 | k6-summary-primeira.json, k6-primeira.txt | Execução exploratória anterior em 08/11, preservada com amostra máxima de 1,74 segundo. Não é benchmark antes/depois de otimização. |
 | auditoria-dependencias.json | Resumo real da consulta npm audit após atualização transitiva: zero vulnerabilidades reportadas na data da coleta. |
 | seguranca-versionamento.json | .env ignorado, ausência de padrões de credencial e links locais conferidos; alcance da revisão explicitado. |
+| ci-github.json, ci-testes-resumo.txt | Execução GitHub Actions 42492067490 concluída success no commit c09d204, com os 58 testes, 100% linhas e 96,47% branches; mapeamento da publicação e árvore idêntica. |
 
 O arquivo de interface TypeScript `order-repository.ts` não tem código executável. A linha 0% exibida para ele na tabela detalhada corresponde a zero instruções/linhas instrumentáveis; não foi excluído do coverage. Percentuais globais informados são os calculados pelo V8/Vitest para todo `src/`.
 
-Tentativas preliminares e falhas corrigidas estão resumidas no gate de aceite. Logs redundantes das primeiras tentativas foram preservados localmente em `tmp/verificacoes-iniciais/`, fora do versionamento. Os resultados finais não são inventados nem selecionados pelo menor p95. Estes arquivos não comprovam CI remoto ou envio ao Moodle.
+Tentativas preliminares e falhas corrigidas estão resumidas no gate de aceite. Logs redundantes das primeiras tentativas foram preservados localmente em `tmp/verificacoes-iniciais/`, fora do versionamento. Os resultados finais não são inventados nem selecionados pelo menor p95. A evidência de CI foi adicionada após a execução remota efetiva; não há comprovante de envio ao Moodle.
