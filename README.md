@@ -4,7 +4,7 @@ API de domínio único para criar, consultar e confirmar pedidos. Trabalho indiv
 
 ## Estado e evidências
 
-Validação técnica local e remota concluída em 08/11/2026. [Repositório público](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos) e [execução real verde do CI](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490), commit `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`. Resultado local: 58 testes, cobertura de 100% das linhas e 96,47% dos branches; smoke final com p95 de criação 127,73 ms e zero falhas. Consulte a [matriz de aceite](docs/ACEITE_B.md) para evidências, limites e revisão humana pendente. Envio ao Moodle ainda não efetuado.
+Validação técnica local e remota concluída em 08/11/2026. [Repositório público](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos) e [execução real verde do CI](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490), commit `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`. Resultado local: 58 testes, cobertura de 100% das linhas e 96,47% dos branches; smoke final com p95 de criação 127,73 ms e zero falhas. Consulte a [matriz de aceite](docs/ACEITE_B.md) para evidências e limites. O aluno aprovou B e A e autorizou auditoria/apresentações. [Fechamento da pré-auditoria e repetição limpa](docs/FECHAMENTO_AUDITORIA.md). Envio ao Moodle ainda não efetuado.
 
 ## Pré-requisitos
 
@@ -142,4 +142,4 @@ Resultado resumido real é escrito em `docs/evidencias/k6-summary.json`. Cada ex
 - [OpenAPI](docs/openapi.yaml), [ADR](docs/adr/0001-decisao.md), [desempenho](docs/desempenho.md), [aceite](docs/ACEITE_B.md), [roteiro de demonstração](docs/DEMONSTRACAO.md).
 - [Contribuição humana](CONTRIBUTORS.md) e [assistência de IA/decisões](docs/ia.md).
 - Apresentação informada pelo aluno: 13/11/2026. Meta de implementação e validação: 08/11/2026. Envio ao Moodle não foi efetuado por este projeto.
-- Projeto A não é requisito para entregar B; só será iniciado após aprovação expressa do B. PDFs definitivos e auditoria comparativa seguem gates do briefing e não estão declarados prontos.
+- Projeto A não é requisito para entregar B. Ambos já foram aprovados pelo aluno; auditoria e materiais de defesa estão no pacote final separado. Ensaio e aprendizagem não são presumidos.

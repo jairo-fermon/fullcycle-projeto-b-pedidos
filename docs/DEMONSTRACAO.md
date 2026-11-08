@@ -62,4 +62,4 @@ Mostrar health e logs para localizar a falha; não reinicializar banco no meio d
 
 ## Limites do que já foi feito
 
-Não houve envio ao Moodle, apresentação, ensaio com o aluno, deploy em nuvem, aprovação do B ou início do A. Não há PDFs definitivos nesta etapa. As evidências permitem revisão do B; o aprendizado e a aprovação humana ainda precisam ocorrer.
+O aluno aprovou B e A e autorizou a pré-auditoria e os materiais de apresentação, reunidos no pacote final separado. Não houve envio ao Moodle, apresentação, ensaio com o aluno ou deploy em nuvem. Aprendizado e tempo real de defesa ainda precisam ser comprovados.

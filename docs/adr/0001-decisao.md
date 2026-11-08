@@ -1,6 +1,6 @@
 # ADR 0001 - Separar pedidos da persistência com Repository e SQL explícito
 
-Status: adotada na implementação; revisão do aluno pendente no gate B.
+Status: adotada na implementação; gate humano aprovado; domínio oral ainda depende de ensaio.
 Data: 08/11/2026.
 
 ## Contexto

@@ -4,7 +4,7 @@ Data: 08/11/2026. Ciclo canônico: 11:43:28-11:45:00, America/Sao_Paulo (UTC-03:
 Revisão de código local validada: `10caa5fd38b9c45f29e6737c52ed306d1ee0123f`.
 Repositório criado pelo aluno: https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos (público, metadados conferidos pelo conector).
 
-**Resultado: validação técnica local e CI remoto PASSARAM.** Código publicado e fechado para revisão na revisão `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`; alterações de documentação posteriores registram evidências sem mudar a implementação. A aprovação humana do B e o envio ao Moodle continuam pendentes. O A não foi iniciado. Não foi atribuída nota estimada nesta etapa; os pesos abaixo são os módulos oficiais inteiros, sem subpesos inventados.
+**Resultado: validação técnica local e CI remoto PASSARAM.** Código publicado e fechado para revisão na revisão `c09d20489f1c6b77e1b74cbee833c3526ef9d95b`; alterações de documentação posteriores registram evidências sem mudar a implementação. O aluno aprovou B e A e autorizou auditoria/apresentações. [Repetição limpa e estado atual](FECHAMENTO_AUDITORIA.md). Moodle e ensaio permanecem sem comprovante. A estimativa interna consta no pacote final separado; os pesos abaixo são os módulos oficiais inteiros, sem subpesos inventados.
 
 [CI real verde, execução 42492067490](https://github.com/jairo-fermon/fullcycle-projeto-b-pedidos/actions/runs/42492067490): início em 08/11 às 11:54:09 e conclusão success verificada às 11:54:47, horário local UTC-03:00. Os metadados constam em `evidencias/ci-github.json`. O job executou todos os controles, incluindo 58 testes e os mesmos percentuais de cobertura locais.
 
@@ -29,7 +29,7 @@ Todos os comandos partem da raiz deste repositório. `npm run validate:local -- 
 | M3 / 15: logs JSON | src/app.ts, src/observability.ts | docker compose logs --no-color --no-log-prefix app | logs-json.txt; teste de ausência de dados sensíveis em qualidade.txt | PASSOU | Sem SQL/erro bruto/payload/headers sensíveis; reqId correlaciona chamada. |
 | M3 / 15: métrica consultável | src/observability.ts, GET /metrics | GET /orders real entre duas consultas /metrics | metrics.prom, validacao-local.json | PASSOU | Labels normalizados; reinício zera contadores; não contam pedidos no banco. |
 | M3 / 15: SLO mensurável | scripts/k6-smoke.js, README, desempenho | Smoke 30 s, 1 VU | k6-summary.json, k6-terminal.txt | PASSOU | p95 criação 127,73 ms <500 ms nesta janela local; não SLO mensal de produção. |
-| M4 / 30: README de primeiro dia | README.md | Seguir preparação e subida/testes/demo documentados | validacao-local.json e comandos datados | PASSOU | Conta/CI e Moodle ainda pendentes; instruções deixam isso explícito. |
+| M4 / 30: README de primeiro dia | README.md | Seguir preparação e subida/testes/demo documentados | validacao-local.json e comandos datados | PASSOU | Repositório público e CI verificados; Moodle e ensaio ainda sem comprovante. |
 | M4 / 30: um ADR com alternativa | docs/adr/0001-decisao.md | Conferir decisão contra imports/SQL | ADR e código | PASSOU | Revisão e defesa humana pendentes. |
 | M4 / 30: OpenAPI compatível | docs/openapi.yaml, testes de integração | npm run openapi:lint e schemas Ajv contra respostas reais | qualidade.txt | PASSOU | Zero erros; 4 avisos de estilo, sem desativar regras ou inventar licença/rotas. |
 | M4 / 30: smoke k6 com p95 | scripts/k6-smoke.js, docs/desempenho.md | docker compose --profile tools run --rm k6 | k6-summary.json, k6-terminal.txt, versões registradas | PASSOU | 116 chamadas, zero falha; baixa carga e amostra pequena. |
@@ -44,7 +44,7 @@ Todos os comandos partem da raiz deste repositório. `npm run validate:local -- 
 3. A árvore `1304347c5700a3d35dd1a3d18aeffb0e8e977007` da candidata local 27324d2 é idêntica à publicada em c09d204. Verificação real: `git rev-parse 27324d2^{tree}` e `git rev-parse origin/main^{tree}` no momento da publicação. O mapeamento completo está em ci-github.json.
 4. CI remoto terminou success; o B tem baseline técnica identificada. Documentação posterior acrescenta a URL e este fechamento, sem mudar o fluxo ou as medições.
 5. O aluno deve rever o [roteiro técnico](DEMONSTRACAO.md) e os cinco conceitos essenciais. Sem revisão humana, não afirmar aprendizado ou ensaio concluído.
-6. Parar e aguardar `APROVO O PROJETO B; INICIAR O A`. Aprovação de publicação não é aprovação do A. Submissão oficial ao Moodle permanece ação futura, sem comprovante.
+6. Gate B e gate A cumpridos por aprovação literal do aluno. Pré-auditoria e PDFs autorizados; submissão oficial ao Moodle e ensaio permanecem ações sem comprovante.
 
 ## Falhas encontradas e corrigidas durante a execução
 

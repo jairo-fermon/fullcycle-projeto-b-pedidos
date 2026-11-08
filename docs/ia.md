@@ -28,3 +28,7 @@ Data: 08/11/2026. Assistente: Codex. Não registrar credenciais, tokens, e-mail 
 ## Decisões ainda a validar pelo aluno
 
 O aluno ainda precisa revisar o ADR, compreender o cálculo monetário e a transação, demonstrar os endpoints e explicar testes, cobertura, CI e p95 com suas palavras. Aprovar o plano não é comprovação desse aprendizado. O gate B registra a revisão e a autorização de próximo marco; não presumir aprovação do A ou de apresentações.
+
+## Gate de auditoria confirmado
+
+O aluno aprovou literalmente o B e o A, encerrando os gates de implementação, e autorizou auditoria/apresentações. A pré-auditoria repetiu o ciclo em checkout limpo, registrou as novas medições e corrigiu textos históricos de estado. Os resultados não constituem avaliação independente. Ensaio, aprendizado, tempo real de fala e Moodle não estão comprovados. A assistência continua declarada.
